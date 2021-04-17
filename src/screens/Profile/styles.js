@@ -3,7 +3,6 @@ import { Dimensions, StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   profContainer: {
     flex: 1,
-    alignItems: 'center',
     height: '100%',
     width: '100%',
     backgroundColor: 'white',
@@ -30,23 +29,27 @@ const styles = StyleSheet.create({
       height: 1,
     },
   },
-  profileTop: {
-    // flexDirection: 'row',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+  profileContent: {
     flex: 1,
-    alignItems: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    justifyContent: 'space-evenly',
     height: 60,
-    width: '100%',
-    backgroundColor: 'yellow',
+    backgroundColor: 'white',
+    padding: 10,
   },
-  weekContainer: {
-    // flex: 1,
+  profileContentBox: {
     alignItems: 'center',
-    height: 100,
-    width: '100%',
-    backgroundColor: 'orange',
-  },
+    justifyContent: 'center',
+
+    height: 120,
+    width: '45%',
+    borderRadius: 10,
+    backgroundColor: '#2679ff',
+    margin: 5,
+  }
+
 });
 
 export default styles;

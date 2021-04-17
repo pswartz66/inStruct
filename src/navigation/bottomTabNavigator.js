@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Skills from '../screens/Skills';
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 
@@ -33,7 +34,7 @@ const BottomTabNavigator = () => {
 
       <Tab.Screen
         name="Skills"
-        component={Home}
+        component={Skills}
         options={{
           tabBarIcon: ({ color }) => (
             <Entypo name={'list'} size={25} color={color} />

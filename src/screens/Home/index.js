@@ -10,15 +10,12 @@ const Home = () => {
 
   const username = "Phillip";
 
-  const newData = "temp string here";
-
   return (
     <View style={styles.homeContainer}>
       
         <AppHeader />
 
       <View style={styles.homeUnderline}></View>
-
 
       <View style={styles.homeList}>
 

@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 50,
+    height: 40,
     width: '100%',
   },
   appNameIn: {

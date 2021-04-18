@@ -6,27 +6,43 @@ const Profile = () => {
 
   const username = "Phil Swartz";
 
-  const boxes = ['one', 'two', 'three', 'four'];
+  const stats = [
+    {
+      id: 1,
+      Lessons: 2,
+      Reviews: 10,
+    },
+  ];
 
   return (
     <View style={styles.profContainer}>
 
-      <Text style={styles.username}>{username}</Text>
-      <View style={styles.divider}></View>
+      <View style={styles.profImage}></View>
 
+      <Text style={styles.username}>{username.toLowerCase()}</Text>
+      <Text style={styles.memberSince}>Member since 2020</Text>
 
 
       <View style={styles.profileContent}>
-
-        {boxes.map((itm) => (
-          <View style={styles.profileContentBox} key={itm}>
-            <Text>{itm}</Text>
+        {stats.map((itm) => (
+          <View style={styles.profileContentStats} key={itm.id}>
+            <Text style={styles.profContentStat}>{itm.Lessons}</Text>
+            <Text style={styles.profContentText}>Lessons</Text>
+          </View>
+        ))}
+        {stats.map((itm) => (
+          <View style={styles.profileContentStats} key={itm.id}>
+            <Text style={styles.profContentStat}>{itm.Reviews}</Text>
+            <Text style={styles.profContentText}>Reviews</Text>
           </View>
         ))}
 
-
       </View>
 
+      <View style={styles.profContentOther}>
+        <Text style={styles.profContentStory}>Your story</Text>
+
+      </View>
 
     </View>
   )

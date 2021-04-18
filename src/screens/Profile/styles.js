@@ -3,51 +3,74 @@ import { Dimensions, StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   profContainer: {
     flex: 1,
+    alignItems: 'center',
     height: '100%',
     width: '100%',
     backgroundColor: 'white',
 
   },
+  profImage: {
+    marginTop: 30,
+    height: 100,
+    width: 100,
+    borderRadius: 50,
+    backgroundColor: 'grey'
+  },
   username: {
     marginTop: 10,
     textAlign: 'center',
-    fontSize: 26,
+    fontSize: 22,
     fontFamily: 'DevanagariSangamMN-Bold',
-    marginBottom: 10,
-
   },
-  divider: {
+  memberSince: {
+    marginTop: 2,
     textAlign: 'center',
-    width: '100%',
-    height: 0.5,
-    backgroundColor: 'black',
-    shadowColor: 'black',
-    shadowRadius: 1,
-    shadowOpacity: .5,
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
+    fontSize: 18,
+    fontFamily: 'DevanagariSangamMN',
+    marginBottom: 10,
   },
   profileContent: {
-    flex: 1,
     flexDirection: 'row',
-    flexWrap: 'wrap',
     alignItems: 'flex-start',
     justifyContent: 'space-evenly',
-    height: 60,
     backgroundColor: 'white',
     padding: 10,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+
   },
-  profileContentBox: {
+  profileContentStats: {
     alignItems: 'center',
     justifyContent: 'center',
-
-    height: 120,
+    height: 100,
     width: '45%',
     borderRadius: 10,
-    backgroundColor: '#2679ff',
+    backgroundColor: 'white',
     margin: 5,
+  },
+  profContentStat: {
+    fontSize: 24,
+    fontFamily: 'DevanagariSangamMN-Bold',
+    color: 'black',
+  },
+  profContentText: {
+    fontSize: 18,
+    fontFamily: 'DevanagariSangamMN',
+    color: 'black',
+  },
+  profContentOther: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    backgroundColor: 'gray',
+    padding: 10,
+    height: 100,
+    width: '100%',
+  },
+  profContentStory: {
+    fontSize: 18,
+    fontFamily: 'DevanagariSangamMN-Bold',
+    color: 'black',
   }
 
 });

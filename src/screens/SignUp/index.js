@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Button, TextInput, TouchableOpacity, KeyboardAvoidingView, Alert } from 'react-native';
 import styles from './styles';
-
 import { Auth } from 'aws-amplify';
 import { validateEmail, validatePassword } from '../validation';
 
@@ -11,7 +10,7 @@ const SignUp = (props) => {
   const [password, onChangePassword] = useState("");
   const [errors, setErrors] = useState({ email: '', password: '' });
 
-  const onSubmit = async() => {
+  const onSubmit = async () => {
     const emailErr = validateEmail(email);
     const passwordErr = validatePassword(password);
 
@@ -21,16 +20,16 @@ const SignUp = (props) => {
         password: passwordErr
       });
     } else {
-
-      try { 
+      try {
         const user = await Auth.signUp({
-        username: email,
-        password: password
-      });
-
-    } catch (error) {
-      Alert.alert(error.message);
-    }
+          username: email,
+          password: password
+        });
+        // redirects to confirm code
+        props.onStateChange('confirmSignUp', user);
+      } catch (error) {
+        Alert.alert(error.message);
+      }
     }
   };
 
@@ -39,26 +38,27 @@ const SignUp = (props) => {
       <KeyboardAvoidingView style={styles.signUpContainer} behavior="padding" enabled>
         <Text style={{ fontSize: 30, fontFamily: 'DevanagariSangamMN-Bold', color: '#2679ff' }}>Sign Up</Text>
 
-        <Text style={{alignSelf: 'flex-start', marginLeft: 10, marginTop: 5, marginBottom: 5}}>Email</Text>
+        <Text style={{ alignSelf: 'flex-start', marginLeft: 10, marginTop: 5, marginBottom: 5 }}>Email *</Text>
         <TextInput
           style={styles.signUpInput}
           onChangeText={email => onChangeEmail(email)}
           value={email}
           placeholder={'Enter your email'}
         />
-        <Text style={{alignSelf: 'flex-start', paddingLeft: 10, paddingRight: 10, color: 'red'}}>{errors.email}</Text>
+        <Text style={{ alignSelf: 'flex-start', paddingLeft: 10, paddingRight: 10, color: 'red' }}>{errors.email}</Text>
 
-        <Text style={{alignSelf: 'flex-start', marginLeft: 10, marginTop: 5, marginBottom: 5}}>Password</Text>
+        <Text style={{ alignSelf: 'flex-start', marginLeft: 10, marginTop: 5, marginBottom: 5 }}>Password *</Text>
         <TextInput
           style={styles.signUpInput}
           onChangeText={password => onChangePassword(password)}
           value={password}
           placeholder={'Enter your password'}
+          secureTextEntry={true}
         />
-        <Text style={{alignSelf: 'flex-start', paddingLeft: 10, paddingRight: 10, color: 'red'}}>{errors.password}</Text>
+        <Text style={{ alignSelf: 'flex-start', paddingLeft: 10, paddingRight: 10, color: 'red' }}>{errors.password}</Text>
 
-        <TouchableOpacity onPress={()=> onSubmit()} style={styles.signUpSubmitBtn}>
-          <Text 
+        <TouchableOpacity onPress={() => onSubmit()} style={styles.signUpSubmitBtn}>
+          <Text
             style={{ textAlign: 'center', fontSize: 18, fontFamily: 'DevanagariSangamMN-Bold', color: 'white' }}
           >
             Submit

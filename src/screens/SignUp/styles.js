@@ -6,8 +6,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: Dimensions.get('window').width,
-    padding: 50
-
+    paddingLeft: 50,
+    paddingRight: 50,
+    backgroundColor: 'white'
   },
   signUpInput: {
     height: 45,
@@ -17,7 +18,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     padding: 10,
     marginBottom: 10,
-
   },
   signUpSubmitBtn: {
     borderRadius: 4,
@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
     margin: 10,
     backgroundColor: '#2679ff',
     width: 260,
-
   },
   signUpBtnsRow: {
     flexDirection: 'row',

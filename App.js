@@ -9,18 +9,20 @@ import {
   Authenticator,
   SignIn,
   // SignUp,
-  ConfirmSignUp,
+  // ConfirmSignUp,
   ConfirmSignIn,
   ForgotPassword,
 } from 'aws-amplify-react-native';
 import SignUp from './src/screens/SignUp';
+import ConfirmSignUp from './src/screens/ConfirmSignUp';
+
 
 Amplify.configure(awsconfig);
 
-function Temp(props) {
-  if (props.authState === 'signIn') return <Text>Welcome</Text>;
-  else return <></>;
-}
+// function Temp(props) {
+//   if (props.authState === 'signIn') return <Text>Welcome</Text>;
+//   else return <></>;
+// }
 
 export default function App() {
 

@@ -33,23 +33,24 @@ const ConfirmSignUp = (props) => {
       <KeyboardAvoidingView style={styles.cSignUpContainer} behavior="padding" enabled>
         <Text style={{ fontSize: 30, fontFamily: 'DevanagariSangamMN-Bold', color: '#2679ff' }}>Confirm Sign Up</Text>
 
-        <Text style={{ alignSelf: 'flex-start', marginLeft: 10, marginTop: 5, marginBottom: 5 }}>Email *</Text>
-        <TextInput
-          style={styles.cSignUpInput}
-          onChangeText={email => onChangeEmail(email)}
-          value={email}
-          placeholder={'Enter your email'}
-        />
-        <Text style={{ alignSelf: 'flex-start', paddingLeft: 10, paddingRight: 10, color: 'red' }}>{errors.email}</Text>
+        <View style={styles.cSignUpForm}>
+          <Text style={{ alignSelf: 'flex-start', marginTop: 5, marginBottom: 5 }}>Email *</Text>
+          <TextInput
+            style={styles.cSignUpInput}
+            onChangeText={email => onChangeEmail(email)}
+            value={email}
+            placeholder={'Enter your email'}
+          />
+          <Text style={{ alignSelf: 'flex-start', paddingRight: 10, color: 'red' }}>{errors.email}</Text>
 
-        <Text style={{ alignSelf: 'flex-start', marginLeft: 10, marginTop: 5, marginBottom: 5 }}>Confirmation Code *</Text>
-        <TextInput
-          style={styles.cSignUpInput}
-          onChangeText={confirmationCode => onChangeConfirmationCode(confirmationCode)}
-          value={confirmationCode}
-          placeholder={'Enter confirmation code'}
-        />
-
+          <Text style={{ alignSelf: 'flex-start', marginTop: 5, marginBottom: 5 }}>Confirmation Code *</Text>
+          <TextInput
+            style={styles.cSignUpInput}
+            onChangeText={confirmationCode => onChangeConfirmationCode(confirmationCode)}
+            value={confirmationCode}
+            placeholder={'Enter confirmation code'}
+          />
+        </View>
         <TouchableOpacity onPress={() => onSubmit()} style={styles.cSignUpSubmitBtn}>
           <Text
             style={{ textAlign: 'center', fontSize: 18, fontFamily: 'DevanagariSangamMN-Bold', color: 'white' }}

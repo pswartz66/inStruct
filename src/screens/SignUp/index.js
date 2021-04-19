@@ -27,7 +27,7 @@ const SignUp = (props) => {
         });
         // redirects to confirm code
         props.onStateChange('confirmSignUp', user);
-        
+
       } catch (error) {
         Alert.alert(error.message);
       }
@@ -39,25 +39,28 @@ const SignUp = (props) => {
       <KeyboardAvoidingView style={styles.signUpContainer} behavior="padding" enabled>
         <Text style={{ fontSize: 30, fontFamily: 'DevanagariSangamMN-Bold', color: '#2679ff' }}>Sign Up</Text>
 
-        <Text style={{ alignSelf: 'flex-start', marginLeft: 10, marginTop: 5, marginBottom: 5 }}>Email *</Text>
-        <TextInput
-          style={styles.signUpInput}
-          onChangeText={email => onChangeEmail(email)}
-          value={email}
-          placeholder={'Enter your email'}
-        />
-        <Text style={{ alignSelf: 'flex-start', paddingLeft: 10, paddingRight: 10, color: 'red' }}>{errors.email}</Text>
+        <View style={styles.signUpForm}>
 
-        <Text style={{ alignSelf: 'flex-start', marginLeft: 10, marginTop: 5, marginBottom: 5 }}>Password *</Text>
-        <TextInput
-          style={styles.signUpInput}
-          onChangeText={password => onChangePassword(password)}
-          value={password}
-          placeholder={'Enter your password'}
-          secureTextEntry={true}
-        />
-        <Text style={{ alignSelf: 'flex-start', paddingLeft: 10, paddingRight: 10, color: 'red' }}>{errors.password}</Text>
+          <Text style={{ alignSelf: 'flex-start', marginTop: 5, marginBottom: 5 }}>Email *</Text>
+          <TextInput
+            style={styles.signUpInput}
+            onChangeText={email => onChangeEmail(email)}
+            value={email}
+            placeholder={'Enter your email'}
+          />
+          <Text style={{ alignSelf: 'flex-start', paddingRight: 10, color: 'red' }}>{errors.email}</Text>
 
+          <Text style={{ alignSelf: 'flex-start', marginTop: 5, marginBottom: 5 }}>Password *</Text>
+          <TextInput
+            style={styles.signUpInput}
+            onChangeText={password => onChangePassword(password)}
+            value={password}
+            placeholder={'Enter your password'}
+            secureTextEntry={true}
+          />
+          <Text style={{ alignSelf: 'flex-start', paddingRight: 10, color: 'red' }}>{errors.password}</Text>
+
+        </View>
         <TouchableOpacity onPress={() => onSubmit()} style={styles.signUpSubmitBtn}>
           <Text
             style={{ textAlign: 'center', fontSize: 18, fontFamily: 'DevanagariSangamMN-Bold', color: 'white' }}

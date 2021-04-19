@@ -6,8 +6,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: Dimensions.get('window').width,
-    paddingLeft: 50,
-    paddingRight: 50,
     backgroundColor: 'white'
   },
   signInInput: {
@@ -30,6 +28,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  signInForm: {
+    width: 260,
+  }
 });
 
 export default styles;

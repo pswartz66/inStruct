@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, TouchableOpacity, TouchableHighlight } from 'react-native';
 import { Auth } from 'aws-amplify';
 import styles from './styles';
 
@@ -16,8 +16,9 @@ const Profile = (props) => {
 
   return (
     <View style={styles.profContainer}>
-      <Button title="Sign Out" onPress={() => Auth.signOut()}/>
-      <View style={styles.profImage}></View>
+      <View style={styles.profImage}>
+        <Text>Add image</Text>
+      </View>
 
       <Text style={styles.username}>{userEmail.toLowerCase()}</Text>
       <Text style={styles.memberSince}>Member since 2020</Text>
@@ -40,9 +41,14 @@ const Profile = (props) => {
       </View>
 
       <View style={styles.profContentOther}>
-        <Text style={styles.profContentStory}>Your story</Text>
+        <Text style={styles.profContentAbout}>Tell us about yourself..</Text>
 
       </View>
+      
+      <TouchableOpacity style={styles.signOutBtn} onPress={() => Auth.signOut()}>
+        <Text style={styles.signOutBtnText}>Sign Out</Text>
+      </TouchableOpacity>
+      {/* </TouchableHighlight> */}
 
     </View>
   )

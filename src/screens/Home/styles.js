@@ -1,10 +1,10 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   homeContainer: {
     flex: 1,
     justifyContent: 'flex-start',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     backgroundColor: 'white',
 
     paddingTop: 10,
@@ -15,9 +15,22 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: 'gray'
   },
-  homeList: {
-    height: '100%',
+  tagLineRow: {
     width: '100%',
+
+  },  
+  tagLine: {
+    marginLeft: 10,
+    marginTop: 10,
+    padding: 4,
+    fontSize: 22,
+    fontFamily: 'DevanagariSangamMN-Bold',
+    color: 'black',
+    // backgroundColor: '#2679ff'
+  },
+  homeList: {
+    width: '100%',
+    backgroundColor: 'white',
   }
 });
 

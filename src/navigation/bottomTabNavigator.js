@@ -10,7 +10,7 @@ import { Entypo } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
-const BottomTabNavigator = (props) => {
+const BottomTabNavigator = () => {
 
   return (
     <Tab.Navigator

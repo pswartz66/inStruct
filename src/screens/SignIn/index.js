@@ -30,6 +30,7 @@ const SignIn = (props) => {
 
       } catch (error) {
         Alert.alert(error.message);
+        throw error;
       }
     }
   };

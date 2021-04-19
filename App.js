@@ -18,7 +18,15 @@ import SignIn from './src/screens/SignIn';
 import SignUp from './src/screens/SignUp';
 import ConfirmSignUp from './src/screens/ConfirmSignUp';
 
-Amplify.configure(awsconfig);
+// work around to remove unhandled promise warnings
+// https://github.com/aws-amplify/amplify-js/issues/5918
+Amplify.configure({
+  ...awsconfig,
+  Analytics: {
+    disabled: true
+  }
+  
+});
 
 const AuthScreens = (props) => {
   // console.log(props.authState);

@@ -10,6 +10,8 @@ const styles = StyleSheet.create({
 
   },
   profImage: {
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: 30,
     height: 100,
     width: 100,
@@ -67,10 +69,22 @@ const styles = StyleSheet.create({
     height: 100,
     width: '100%',
   },
-  profContentStory: {
+  profContentAbout: {
     fontSize: 18,
-    fontFamily: 'DevanagariSangamMN-Bold',
+    fontFamily: 'DevanagariSangamMN',
     color: 'black',
+  },
+  signOutBtn: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 60,
+    width: '100%',
+    backgroundColor: '#e8e8e8'
+  },
+  signOutBtnText: {
+    fontSize: 18,
+    fontFamily: 'DevanagariSangamMN',
+    color: '#2679ff'
   }
 
 });

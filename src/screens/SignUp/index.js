@@ -27,6 +27,7 @@ const SignUp = (props) => {
         });
         // redirects to confirm code
         props.onStateChange('confirmSignUp', user);
+        
       } catch (error) {
         Alert.alert(error.message);
       }

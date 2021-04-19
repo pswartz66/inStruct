@@ -19,7 +19,9 @@ const ConfirmSignUp = (props) => {
     } else {
       try {
         const user = await Auth.confirmSignUp(email, confirmationCode);
-        props.onStateChange('signIn', user)
+
+        props.onStateChange('signIn', {})
+
       } catch (error) {
         Alert.alert(error.message);
       }

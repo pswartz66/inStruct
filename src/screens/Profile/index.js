@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
+import { Auth } from 'aws-amplify';
 import styles from './styles';
 
-const Profile = () => {
-
-  const username = "Phil Swartz";
+const Profile = (props) => {
+  const userEmail = Auth.user.attributes.email;
 
   const stats = [
     {
@@ -16,10 +16,10 @@ const Profile = () => {
 
   return (
     <View style={styles.profContainer}>
-
+      <Button title="Sign Out" onPress={() => Auth.signOut()}/>
       <View style={styles.profImage}></View>
 
-      <Text style={styles.username}>{username.toLowerCase()}</Text>
+      <Text style={styles.username}>{userEmail.toLowerCase()}</Text>
       <Text style={styles.memberSince}>Member since 2020</Text>
 
 

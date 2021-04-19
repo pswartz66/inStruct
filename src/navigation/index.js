@@ -5,7 +5,8 @@ import BottomTabNavigator from '../navigation/bottomTabNavigator';
 
 const Stack = createStackNavigator();
 
-const RootNavigation = () => {
+const RootNavigation = (props) => {
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -14,7 +15,7 @@ const RootNavigation = () => {
         }}
         >
           <Stack.Screen 
-            name="Bottom-Nav" 
+            name="Bottom-Nav"
             component={BottomTabNavigator} 
             options={({ route }) => ({ 
               title: "Home Page", 

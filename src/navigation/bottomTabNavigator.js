@@ -18,13 +18,16 @@ const BottomTabNavigator = () => {
       tabBarOptions={{
         tabStyle: {
           backgroundColor: '#2679ff',
-          marginTop: -1,
-          height: 70,
-          padding: 10,
+          // marginTop: -1,
+          height: 90,
+          paddingBottom: 30,
         },
+        // safeAreaInsets: { 
+        //   bottom: 10, 
+        // },
         style: {
-          height: 70,
-          marginBottom: -1,
+          height: 90,
+          // paddingBottom: 40,
         },
         activeTintColor: 'white',
         inactiveTintColor: '#91bbff',

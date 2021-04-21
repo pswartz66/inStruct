@@ -10,12 +10,12 @@ const styles = StyleSheet.create({
   },
   appNameIn: {
     color: '#191a1c',
-    fontFamily: 'DevanagariSangamMN-Bold',
+    fontFamily: 'HelveticaNeue-Medium',
     fontSize: 26,
   },
   appNameStruct: {
     color: '#2679ff',
-    fontFamily: 'DevanagariSangamMN-Bold',
+    fontFamily: 'HelveticaNeue-Medium',
     fontSize: 26,
   }
 });

@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
   instructorName: {
     fontSize: 20,
-    fontFamily: 'DevanagariSangamMN',
+    fontFamily: 'HelveticaNeue-Thin',
     color: 'black',
   }
 });

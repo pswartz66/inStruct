@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   profImage: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 30,
+    marginTop: 10,
     height: 100,
     width: 100,
     borderRadius: 50,
@@ -22,13 +22,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
     textAlign: 'center',
     fontSize: 22,
-    fontFamily: 'DevanagariSangamMN-Bold',
+    fontFamily: 'HelveticaNeue-Medium',
   },
   memberSince: {
     marginTop: 2,
     textAlign: 'center',
     fontSize: 18,
-    fontFamily: 'DevanagariSangamMN',
+    fontFamily: 'HelveticaNeue-Thin',
     marginBottom: 10,
   },
   profileContent: {
@@ -52,12 +52,12 @@ const styles = StyleSheet.create({
   },
   profContentStat: {
     fontSize: 24,
-    fontFamily: 'DevanagariSangamMN-Bold',
+    fontFamily: 'HelveticaNeue-Medium',
     color: 'black',
   },
   profContentText: {
     fontSize: 18,
-    fontFamily: 'DevanagariSangamMN',
+    fontFamily: 'HelveticaNeue-Thin',
     color: 'black',
   },
   profContentOther: {
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
   profContentAbout: {
     fontSize: 18,
-    fontFamily: 'DevanagariSangamMN',
+    fontFamily: 'HelveticaNeue-Thin',
     color: 'black',
   },
   signOutBtn: {
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   },
   signOutBtnText: {
     fontSize: 18,
-    fontFamily: 'DevanagariSangamMN',
+    fontFamily: 'HelveticaNeue-Medium',
     color: '#2679ff'
   }
 

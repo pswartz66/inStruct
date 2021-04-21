@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Button, TouchableOpacity, TouchableHighlight } from 'react-native';
 import { Auth } from 'aws-amplify';
 import styles from './styles';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Profile = (props) => {
   const userEmail = Auth.user.attributes.email;
@@ -15,7 +16,7 @@ const Profile = (props) => {
   ];
 
   return (
-    <View style={styles.profContainer}>
+    <SafeAreaView style={styles.profContainer}>
       <View style={styles.profImage}>
         <Text>Add image</Text>
       </View>
@@ -48,9 +49,8 @@ const Profile = (props) => {
       <TouchableOpacity style={styles.signOutBtn} onPress={() => Auth.signOut()}>
         <Text style={styles.signOutBtnText}>Sign Out</Text>
       </TouchableOpacity>
-      {/* </TouchableHighlight> */}
 
-    </View>
+    </SafeAreaView>
   )
 }
 

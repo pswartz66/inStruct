@@ -38,7 +38,7 @@ const SignIn = (props) => {
   if (props.authState === 'signIn') {
     return (
       <KeyboardAvoidingView style={styles.signInContainer} behavior="padding" enabled>
-        <Text style={{ fontSize: 30, fontFamily: 'DevanagariSangamMN-Bold', color: '#2679ff' }}>Sign In</Text>
+        <Text style={{ fontSize: 30, fontFamily: 'HelveticaNeue-Bold', color: '#2679ff' }}>Sign In</Text>
 
         <View style={styles.signInForm}>
           <Text style={{ alignSelf: 'flex-start', marginTop: 5, marginBottom: 5 }}>Email *</Text>
@@ -64,7 +64,7 @@ const SignIn = (props) => {
 
         <TouchableOpacity onPress={() => onSubmit()} style={styles.signInSubmitBtn}>
           <Text
-            style={{ textAlign: 'center', fontSize: 18, fontFamily: 'DevanagariSangamMN-Bold', color: 'white' }}
+            style={{ textAlign: 'center', fontSize: 18, fontFamily: 'HelveticaNeue-Bold', color: 'white' }}
           >
             Submit
           </Text>

@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import styles from './styles';
 import TopInstructorList from '../../components/TopInstructorList';
 import AppHeader from '../../components/AppHeader';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // tag line = inStruct --> locate any instructor near you
 
@@ -11,7 +12,7 @@ const Home = () => {
   const username = "Phillip";
 
   return (
-    <View style={styles.homeContainer}>
+    <SafeAreaView style={styles.homeContainer}>
       <AppHeader />
       <View style={styles.homeUnderline}></View>
 
@@ -33,7 +34,7 @@ const Home = () => {
 
       </View>
 
-    </View>
+    </SafeAreaView>
   )
 }
 

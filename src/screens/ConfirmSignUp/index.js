@@ -31,7 +31,7 @@ const ConfirmSignUp = (props) => {
   if (props.authState === 'confirmSignUp') {
     return (
       <KeyboardAvoidingView style={styles.cSignUpContainer} behavior="padding" enabled>
-        <Text style={{ fontSize: 30, fontFamily: 'DevanagariSangamMN-Bold', color: '#2679ff' }}>Confirm Sign Up</Text>
+        <Text style={{ fontSize: 30, fontFamily: 'HelveticaNeue-Bold', color: '#2679ff' }}>Confirm Sign Up</Text>
 
         <View style={styles.cSignUpForm}>
           <Text style={{ alignSelf: 'flex-start', marginTop: 5, marginBottom: 5 }}>Email *</Text>
@@ -53,7 +53,7 @@ const ConfirmSignUp = (props) => {
         </View>
         <TouchableOpacity onPress={() => onSubmit()} style={styles.cSignUpSubmitBtn}>
           <Text
-            style={{ textAlign: 'center', fontSize: 18, fontFamily: 'DevanagariSangamMN-Bold', color: 'white' }}
+            style={{ textAlign: 'center', fontSize: 18, fontFamily: 'HelveticaNeue-Bold', color: 'white' }}
           >
             Confirm
           </Text>

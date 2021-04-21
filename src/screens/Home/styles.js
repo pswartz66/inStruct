@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     padding: 4,
     fontSize: 22,
-    fontFamily: 'DevanagariSangamMN-Bold',
+    fontFamily: 'HelveticaNeue-Medium',
     color: 'black',
     // backgroundColor: '#2679ff'
   },

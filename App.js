@@ -1,8 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import Navigation from './src/navigation';
-
 import { Amplify } from 'aws-amplify';
 import awsconfig from './src/aws-exports';
 import { 
@@ -17,6 +16,7 @@ import {
 import SignIn from './src/screens/SignIn';
 import SignUp from './src/screens/SignUp';
 import ConfirmSignUp from './src/screens/ConfirmSignUp';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 // work around to remove unhandled promise warnings
 // https://github.com/aws-amplify/amplify-js/issues/5918
@@ -44,9 +44,9 @@ const AuthScreens = (props) => {
       return <ChangePassword {...props} />;
     case 'signedIn':
       return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
           <Navigation />
-      </SafeAreaView>
+        </View>
       );
     default:
       return <></>;
@@ -57,7 +57,7 @@ const AuthScreens = (props) => {
 export default function App() {
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaProvider style={styles.container}>
       <StatusBar barStyle="light-content" />
       <Authenticator
         usernameAttributes="email"
@@ -67,15 +67,16 @@ export default function App() {
       >      
         <AuthScreens />
       </Authenticator>
-    </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: 'white',
+    // flex: 1,
+    // backgroundColor: '#2679ff',
     width: '100%',
+    height: Dimensions.get('window').height,
   },
 });

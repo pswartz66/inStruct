@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import styles from './styles';
 import TopInstructorList from '../../components/TopInstructorList';
+import TopicList from '../../components/TopicList'
 import AppHeader from '../../components/AppHeader';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -25,8 +26,9 @@ const Home = () => {
         <TopInstructorList />
 
         {/* List of Instructors currently online */}
-        <Text style={styles.tagLine}>Available Now</Text>
-
+        <Text style={styles.tagLine}>Swipe our options below</Text>
+        
+        <TopicList />
 
         <Text style={styles.tagLine}></Text>
 

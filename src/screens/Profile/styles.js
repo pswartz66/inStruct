@@ -69,6 +69,12 @@ const styles = StyleSheet.create({
     height: 100,
     width: '100%',
   },
+  profHoursOfCompletion: {
+    height: 50,
+    width: '100%',
+    backgroundColor: 'orange',
+
+  },
   profContentAbout: {
     fontSize: 18,
     fontFamily: 'HelveticaNeue-Thin',

@@ -44,7 +44,7 @@ const SignUp = (props) => {
           <Text style={{ alignSelf: 'flex-start', marginTop: 5, marginBottom: 5 }}>Email *</Text>
           <TextInput
             style={styles.signUpInput}
-            onChangeText={email => onChangeEmail(email)}
+            onChangeText={email => onChangeEmail(email.toLowerCase())}
             value={email}
             placeholder={'Enter your email'}
           />

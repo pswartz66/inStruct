@@ -1,10 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import styles from './styles';
 import TopInstructorList from '../../components/TopInstructorList';
 import TopicList from '../../components/TopicList'
 import AppHeader from '../../components/AppHeader';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
+import MileRange from '../../components/MileRange';
+import { SimpleLineIcons } from '@expo/vector-icons'; 
 
 // tag line = inStruct --> locate any instructor near you
 
@@ -22,18 +25,19 @@ const Home = () => {
       </View>
 
       <View style={styles.homeList}>
-        {/* Horizontal Flat List outlining top instructors*/}
         <TopInstructorList />
 
-        {/* List of Instructors currently online */}
         <Text style={styles.tagLine}>Swipe our options below</Text>
         
         <TopicList />
 
-        <Text style={styles.tagLine}></Text>
+        <Text style={styles.tagLine}>Located within...</Text>
 
+        <MileRange />
 
-
+        <Pressable style={styles.finderBackground}>
+          <SimpleLineIcons name="magnifier" size={100} color="black" />
+        </Pressable>
       </View>
 
     </SafeAreaView>

@@ -1,25 +1,21 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  instructorCard: {
+  miles: {
+    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 100,
-    width: 100,
+    height: 50,
+    width: 140,
+    margin: 10,
     backgroundColor: 'white',
-    margin: 12,
-    borderRadius: 100,
-    shadowColor: "#2679ff",
-    shadowOpacity: 1,
-    shadowRadius: 2,
-    shadowOffset: {
-      height: 0,
-      width: 0
-    }
+    borderRadius: 30,
+    borderWidth: 1,
+    borderColor: '#2679ff'
     
   },
-  instructorName: {
-    fontSize: 20,
+  milesText: {
+    fontSize: 16,
     fontFamily: 'HelveticaNeue-Medium',
     color: 'black',
   }

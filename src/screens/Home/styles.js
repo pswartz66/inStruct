@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   homeContainer: {
@@ -31,6 +31,14 @@ const styles = StyleSheet.create({
   homeList: {
     width: '100%',
     backgroundColor: 'white',
+  },
+  finderBackground: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 310,
+    width: Dimensions.get('window').width,
+    backgroundColor: 'blue',
+
   }
 });
 

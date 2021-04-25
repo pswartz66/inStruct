@@ -54,7 +54,7 @@ const TopicList = () => {
           data={topics}
           key={topics.id}
           renderItem={({item}) => <Topic topic={item} />}
-          showsHorizontalScrollIndicator={true}
+          showsHorizontalScrollIndicator={false}
           snapToAlignment={'start'}
           decelerationRate={'slow'}
           horizontal={true}

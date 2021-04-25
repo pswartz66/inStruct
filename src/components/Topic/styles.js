@@ -8,12 +8,14 @@ const styles = StyleSheet.create({
     height: 50,
     width: 140,
     margin: 10,
-    backgroundColor: 'gray',
+    backgroundColor: 'white',
     borderRadius: 30,
+    borderWidth: 1,
+    borderColor: '#2679ff'
   },
   topicText: {
     fontSize: 16,
-    fontFamily: 'HelveticaNeue-Bold',
+    fontFamily: 'HelveticaNeue-Medium',
     color: 'black',
   }
 });

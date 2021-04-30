@@ -23,11 +23,11 @@ expo start --ios
 ```
 
 ## Helpful links and documentation
-- How to install and use [https://docs.expo.io/](Expo).
+- How to install and use [Expo](https://docs.expo.io/).
 
-- Sign up for [https://aws.amazon.com/amplify/](AWS Amplify).
+- Sign up for [AWS Amplify](https://aws.amazon.com/amplify/).
 
-- Learn the basic steps and auth setup process via this [https://www.youtube.com/watch?v=4uP9QlFGw5A](Youtube tutorial).
+- Learn the basic steps and auth setup process for a react native & aws amplify app via this [YouTube tutorial](https://www.youtube.com/watch?v=4uP9QlFGw5A).
 
 
 

@@ -7,7 +7,7 @@ cd inStruct && npm install
 ```
 
 ## Running the app
-Through the expo app (downloaded from the app store):
+Through the expo app (downloaded from the app store and scan QR code):
 ```
 expo start
 ```
@@ -17,7 +17,7 @@ For Android:
 expo start --android
 ```
 
-For ios:
+For ios (xcode is required as it uses the simulator):
 ```
 expo start --ios
 ```

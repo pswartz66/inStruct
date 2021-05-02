@@ -9,13 +9,18 @@ import {
   // SignIn,
   // SignUp,
   // ConfirmSignUp,
-  ForgotPassword,
+  // ForgotPassword,
+  // ChangePassword,
 } from 'aws-amplify-react-native';
 
 // Custom SignIn/SignUp pages
 import SignIn from './src/screens/SignIn';
 import SignUp from './src/screens/SignUp';
 import ConfirmSignUp from './src/screens/ConfirmSignUp';
+import ForgotPassword from './src/screens/ForgotPassword';
+import ChangePassword from './src/screens/ChangePassword';
+
+
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 // work around to remove unhandled promise warnings
@@ -30,6 +35,7 @@ Amplify.configure({
 
 const AuthScreens = (props) => {
   // console.log(props.authState);
+  console.log('props', props.authState);
 
   switch (props.authState) {
     case 'signIn':

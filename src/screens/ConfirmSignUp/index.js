@@ -6,6 +6,9 @@ import { validateEmail } from '../validation';
 
 const ConfirmSignUp = (props) => {
 
+  // console.log('Email from sign up', props.user);
+
+
   const [email, onChangeEmail] = useState("");
   const [confirmationCode, onChangeConfirmationCode] = useState("");
   const [errors, setErrors] = useState({ email: '' });

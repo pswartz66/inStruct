@@ -20,9 +20,11 @@ const ForgotPassword = (props) => {
       });
     } else {
       try {
+        const user = email;
+
         await Auth.forgotPassword(email).then(() => {
           // navigate to change password screen
-          props.onStateChange('changePassword', {});
+          props.onStateChange('changePassword', user);
         }).catch(err => console.log(err));
 
       } catch (error) {

@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     backgroundColor: 'white',
-
+    // backgroundColor: 'yellow',
     paddingTop: 10,
 
   },
@@ -15,10 +15,6 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: 'gray'
   },
-  tagLineRow: {
-    width: '100%',
-
-  },  
   tagLine: {
     marginLeft: 10,
     marginTop: 10,
@@ -28,17 +24,14 @@ const styles = StyleSheet.create({
     color: 'black',
     // backgroundColor: '#2679ff'
   },
-  homeList: {
-    width: '100%',
-    backgroundColor: 'white',
-  },
-  finderBackground: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 310,
-    width: Dimensions.get('window').width,
-    backgroundColor: 'blue',
-
+  reccomendInput: {
+    height: 45,
+    width: 360,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 4,
+    padding: 10,
+    marginLeft: 14,
   }
 });
 

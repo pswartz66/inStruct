@@ -1,12 +1,16 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Skills from '../screens/Skills';
 import Home from '../screens/Home';
+import Connect from '../screens/Connect';
+import Meet from '../screens/Meet';
+import Learn from '../screens/Learn';
 import Profile from '../screens/Profile';
 
 import { Ionicons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons';
+// import { AntDesign } from '@expo/vector-icons';
+// import { Entypo } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -20,6 +24,7 @@ const BottomTabNavigator = () => {
           backgroundColor: '#2679ff',
           height: 90,
           paddingBottom: 30,
+          marginTop: -1,
         },
         // safeAreaInsets: { 
         //   bottom: 10, 
@@ -33,26 +38,43 @@ const BottomTabNavigator = () => {
 
       }}
     >
-
-      <Tab.Screen
-        name="Skills"
-        component={Skills}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <Entypo name={'list'} size={25} color={color} />
-          )
-        }}
-      />
       <Tab.Screen
         name="Find"
         component={Home}
         options={{
           tabBarIcon: ({ color }) => (
-            <AntDesign name={'find'} size={25} color={color} />
+            <Feather name={'search'} size={25} color={color} />
           )
         }}
       />
 
+      <Tab.Screen
+        name="Connect"
+        component={Connect}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Feather name={'message-circle'} size={25} color={color} />
+          )
+        }}
+      />
+      <Tab.Screen
+        name="Meet"
+        component={Meet}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Feather name={'calendar'} size={25} color={color} />
+          )
+        }}
+      />
+      <Tab.Screen
+        name="Learn"
+        component={Learn}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Feather name={'trending-up'} size={25} color={color} />
+          )
+        }}
+      />
       <Tab.Screen
         name="Profile"
         component={Profile}
@@ -62,7 +84,6 @@ const BottomTabNavigator = () => {
           )
         }}
       />
-
     </Tab.Navigator>
   );
 }

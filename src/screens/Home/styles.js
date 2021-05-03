@@ -6,14 +6,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     backgroundColor: 'white',
-    // backgroundColor: 'yellow',
-    paddingTop: 10,
-
-  },
-  homeUnderline: {
-    height: 0.5,
-    width: '100%',
-    backgroundColor: 'gray'
   },
   tagLine: {
     marginLeft: 10,
@@ -22,16 +14,16 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontFamily: 'HelveticaNeue-Medium',
     color: 'black',
-    // backgroundColor: '#2679ff'
   },
   reccomendInput: {
-    height: 45,
-    width: 360,
+    height: 50,
+    width: Dimensions.get('window').width - 30,
     borderColor: 'gray',
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderRadius: 4,
     padding: 10,
-    marginLeft: 14,
+    marginLeft: 15,
+    // backgroundColor: '#e8e8e8',
   }
 });
 

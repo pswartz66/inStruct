@@ -20,10 +20,24 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width - 30,
     borderColor: 'gray',
     borderWidth: 0.5,
-    borderRadius: 4,
+    borderRadius: 10,
     padding: 10,
     marginLeft: 15,
-    // backgroundColor: '#e8e8e8',
+  },
+  searchBarContainer: {
+    justifyContent: 'center',
+    marginTop: 10,
+    marginBottom: 0,
+  },
+  searchBarVisibleText: {
+    color: '#2679ff',
+    fontFamily: 'HelveticaNeue-Medium',
+    fontSize: 18,
+    alignSelf: 'center'
+  },
+  aboveSearchAnim: {
+    width: Dimensions.get('window').width,
+    backgroundColor: 'white'
   }
 });
 

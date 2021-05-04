@@ -1,43 +1,136 @@
-import React from 'react';
-import { View, Text, TextInput, ScrollView } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { View, Text, TextInput, FlatList, Keyboard, Dimensions } from 'react-native';
 import styles from './styles';
 import AppHeader from '../../components/AppHeader';
-import SearchBar from '../../components/SearchBar';
-
+import { Feather } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Home = () => {
 
-  const username = "Phillip";
+  const [searchBarFocused, setSearchBarFocused] = useState(false);
 
+  const categoryList = [
+    {
+      id: 1,
+      header: 'Instructors'
+    },
+    {
+      id: 2,
+      header: 'Sports'
+    },
+    {
+      id: 3,
+      header: 'Education'
+    },
+    {
+      id: 4,
+      header: 'Instrument'
+    },
+    {
+      id: 5,
+      header: 'Other'
+    },
+    {
+      id: 6,
+      header: 'Reccomendations'
+    },
+  ]
+
+  const searchBarClicked = () => {
+    Keyboard.addListener('keyboardDidShow', keyboardDidShow);
+    Keyboard.addListener('keyboardWillShow', keyboardWillShow);
+    Keyboard.addListener('keyboardWillHide', keyboardWillHide);
+
+  }
+
+  const keyboardDidShow = () => {
+    setSearchBarFocused(true);
+  }
+  const keyboardWillShow = () => {
+    setSearchBarFocused(true);
+  }
+  const keyboardWillHide = () => {
+    setSearchBarFocused(false);
+
+  }
+  
   return (
     <SafeAreaView style={styles.homeContainer}>
-      <AppHeader />
 
-      <SearchBar />
+      {searchBarFocused ? (
+        <View style={styles.aboveSearchAnim}
+        >
+          <Text style={styles.searchBarVisibleText}>Find an instructor</Text>
+        </View>
+      ) : <AppHeader />}
 
-      <ScrollView>
-        <Text style={styles.tagLine}>Instructors</Text>
+      <View style={styles.searchBarContainer}>
 
-        <Text style={styles.tagLine}>Sports</Text>
+        <View style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          borderColor: 'gray',
+          borderWidth: 0.5,
+          borderRadius: 10,
+          paddingLeft: 10,
+          marginLeft: 15,
+          backgroundColor: searchBarFocused ? 'white' : '#ebebeb',
+        }}>
+          <Feather name={'search'} size={24} color={'black'} />
+          <TextInput
+            style={{
+              justifyContent: 'center',
+              height: 50,
+              width: Dimensions.get('window').width - 65,
+              borderRadius: 10,
+              paddingHorizontal: 10,
+              backgroundColor: searchBarFocused ? 'white' : '#ebebeb',
+            }}
+            placeholder={'Search...'}
+            onFocus={() => searchBarClicked()}
+            onPressIn={() => fadeIn()}
 
-        <Text style={styles.tagLine}>Education</Text>
+          />
+        </View>
+      </View>
 
-        <Text style={styles.tagLine}>Instrument</Text>
 
-        <Text style={styles.tagLine}>Other</Text>
 
-        <Text style={styles.tagLine}>Reccomendations</Text>
-        
-        <TextInput
-          style={styles.reccomendInput}
-          // onChangeText={email => onChangeEmail(email.toLowerCase())}
-          // value={email}
-          placeholder={`${"Tell us what you'd like to learn"}`}
-        />
+      <FlatList
+        snapToAlignment={'start'}
+        decelerationRate={'fast'}
+        snapToInterval={200}
+        showsVerticalScrollIndicator={false}
+        style={{
+          width: '100%',
+          height: '100%',
+          backgroundColor: searchBarFocused ? 'rgba(0,0,0,0.1)' : 'white',
+          opacity: searchBarFocused ? '0.3' : '1.0'
 
-      </ScrollView>
+        }}
+        data={categoryList}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) =>
+          <View
+            style={{
+              height: 200,
+              paddingHorizontal: 4
+            }}
+            key={item.id.toString()}
+          >
+            <Text style={styles.tagLine}>{item.header}</Text>
+          </View>
+        }
+      />
+
+
+      <TextInput
+        style={styles.reccomendInput}
+        placeholder={`${"Tell us what you'd like to learn"}`}
+      />
+
     </SafeAreaView>
+
   )
 }
 

@@ -5,6 +5,8 @@ import AppHeader from '../../components/AppHeader';
 import { Feather } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import InstructorList from '../../components/InstructorList';
+
 const Home = () => {
 
   const [searchBarFocused, setSearchBarFocused] = useState(false);
@@ -36,6 +38,22 @@ const Home = () => {
     },
   ]
 
+  const instructorList = [
+    {
+      id: 1,
+      name: 'Joe'
+    },
+    {
+      id: 2,
+      name: 'Sally'
+    },
+    {
+      id: 3,
+      name: 'Anthony'
+    }
+  ]
+
+
   const searchBarClicked = () => {
     Keyboard.addListener('keyboardDidShow', keyboardDidShow);
     Keyboard.addListener('keyboardWillShow', keyboardWillShow);
@@ -53,7 +71,7 @@ const Home = () => {
     setSearchBarFocused(false);
 
   }
-  
+
   return (
     <SafeAreaView style={styles.homeContainer}>
 
@@ -81,6 +99,7 @@ const Home = () => {
             style={{
               justifyContent: 'center',
               height: 50,
+              marginTop: 1,
               width: Dimensions.get('window').width - 65,
               borderRadius: 10,
               paddingHorizontal: 10,
@@ -99,7 +118,7 @@ const Home = () => {
       <FlatList
         snapToAlignment={'start'}
         decelerationRate={'fast'}
-        snapToInterval={200}
+        // snapToInterval={200}
         showsVerticalScrollIndicator={false}
         style={{
           width: '100%',
@@ -119,6 +138,20 @@ const Home = () => {
             key={item.id.toString()}
           >
             <Text style={styles.tagLine}>{item.header}</Text>
+
+            {item.header === 'Instructors' ? (
+              <FlatList
+                horizontal={true}
+                data={instructorList}
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({ item }) => <InstructorList instructor={item} />}
+                snapToAlignment={'start'}
+                decelerationRate={'fast'}
+                snapToInterval={Dimensions.get('window').width - 175}
+              />
+            ) : null}
+            
           </View>
         }
       />

@@ -21,7 +21,7 @@ import ForgotPassword from './src/screens/ForgotPassword';
 import ChangePassword from './src/screens/ChangePassword';
 
 
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 // work around to remove unhandled promise warnings
 // https://github.com/aws-amplify/amplify-js/issues/5918
@@ -81,7 +81,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    // backgroundColor: '#2679ff',
+    backgroundColor: 'orange',
     width: '100%',
     height: Dimensions.get('window').height,
   },

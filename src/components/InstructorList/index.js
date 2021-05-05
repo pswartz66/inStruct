@@ -7,6 +7,8 @@ const InstructorList = (props) => {
   const { instructor } = props;
   return (
     <View style={styles.InStructorCard}>
+
+      <View style={styles.InStructorImg}></View>
       <Text>{instructor.name}</Text>
     </View>
   )

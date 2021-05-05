@@ -6,11 +6,14 @@ import { Feather } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import InstructorList from '../../components/InstructorList';
+import SportList from '../../components/SportList';
+import EducationList from '../../components/EducationList';
 
 const Home = () => {
 
   const [searchBarFocused, setSearchBarFocused] = useState(false);
 
+  // our standard lists of categories
   const categoryList = [
     {
       id: 1,
@@ -38,6 +41,7 @@ const Home = () => {
     },
   ]
 
+  // query to fetch top 5 instructors based on rating and highest # of meets
   const instructorList = [
     {
       id: 1,
@@ -50,7 +54,55 @@ const Home = () => {
     {
       id: 3,
       name: 'Anthony'
+    },
+    {
+      id: 4,
+      name: 'Matt'
+    },
+    {
+      id: 5,
+      name: 'Nicole'
     }
+  ]
+
+  // list of sports based on signed up instructors
+  const sportList = [
+    {
+      id: 1,
+      sport: 'basketball'
+    },
+    {
+      id: 2,
+      sport: 'baseball'
+    },
+    {
+      id: 3,
+      sport: 'tennis'
+    },
+    {
+      id: 4,
+      sport: 'boxing'
+    },
+  ]
+
+  // list of sports based on signed up instructors
+  const educationList = [
+    {
+      id: 1,
+      subject: 'math'
+    },
+    {
+      id: 2,
+      subject: 'finance'
+    },
+    {
+      id: 3,
+      subject: 'coding'
+    },
+    {
+      id: 4,
+      subject: 'physcology'
+    },
   ]
 
 
@@ -88,22 +140,23 @@ const Home = () => {
           flexDirection: 'row',
           alignItems: 'center',
           borderColor: 'gray',
-          borderWidth: 0.5,
+          borderWidth: 0.3,
           borderRadius: 10,
           paddingLeft: 10,
           marginLeft: 15,
-          backgroundColor: searchBarFocused ? 'white' : '#ebebeb',
+          backgroundColor: searchBarFocused ? 'white' : '#f0f2f5',
         }}>
+
           <Feather name={'search'} size={24} color={'black'} />
           <TextInput
             style={{
               justifyContent: 'center',
-              height: 50,
+              height: 45,
               marginTop: 1,
               width: Dimensions.get('window').width - 65,
               borderRadius: 10,
               paddingHorizontal: 10,
-              backgroundColor: searchBarFocused ? 'white' : '#ebebeb',
+              backgroundColor: searchBarFocused ? 'white' : '#f0f2f5',
             }}
             placeholder={'Search...'}
             onFocus={() => searchBarClicked()}
@@ -114,11 +167,10 @@ const Home = () => {
       </View>
 
 
-
+      {/* Vertical Flatlist */}
       <FlatList
         snapToAlignment={'start'}
         decelerationRate={'fast'}
-        // snapToInterval={200}
         showsVerticalScrollIndicator={false}
         style={{
           width: '100%',
@@ -132,30 +184,63 @@ const Home = () => {
         renderItem={({ item }) =>
           <View
             style={{
-              height: 200,
               paddingHorizontal: 4
             }}
             key={item.id.toString()}
           >
             <Text style={styles.tagLine}>{item.header}</Text>
 
+            {/* Vertical Flatlist */}
             {item.header === 'Instructors' ? (
               <FlatList
-                horizontal={true}
+                style={{
+                  backgroundColor: 'white',
+                  borderColor: 'gray',
+                  borderWidth: 0.3,
+                  borderRadius: 10,
+                  marginLeft: 10,
+                  marginRight: 10,
+                }}
+                vertical={true}
                 data={instructorList}
-                showsHorizontalScrollIndicator={false}
+                showsVerticalScrollIndicator={true}
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({ item }) => <InstructorList instructor={item} />}
+                snapToAlignment={'start'}
+                decelerationRate={'fast'}
+              />
+            ) : null}
+
+
+            {item.header === 'Sports' ? (
+              <FlatList
+                horizontal={true}
+                data={sportList}
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({ item }) => <SportList sport={item} />}
                 snapToAlignment={'start'}
                 decelerationRate={'fast'}
                 snapToInterval={Dimensions.get('window').width - 175}
               />
             ) : null}
-            
+
+            {item.header === 'Education' ? (
+              <FlatList
+                horizontal={true}
+                data={educationList}
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({ item }) => <EducationList subject={item} />}
+                snapToAlignment={'start'}
+                decelerationRate={'fast'}
+                snapToInterval={Dimensions.get('window').width - 175}
+              />
+            ) : null}
+
           </View>
         }
       />
-
 
       <TextInput
         style={styles.reccomendInput}

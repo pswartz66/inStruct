@@ -2,16 +2,18 @@ import { Dimensions, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   homeContainer: {
-    flex: 1,
+    // flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     backgroundColor: 'white',
+    marginBottom: 60,
+    // backgroundColor: 'yellow',
   },
   tagLine: {
     marginLeft: 10,
     marginTop: 10,
     padding: 4,
-    fontSize: 22,
+    fontSize: 18,
     fontFamily: 'HelveticaNeue-Medium',
     color: 'black',
   },
@@ -26,7 +28,7 @@ const styles = StyleSheet.create({
   },
   searchBarContainer: {
     justifyContent: 'center',
-    marginTop: 10,
+    marginTop: 6,
     marginBottom: 0,
   },
   searchBarVisibleText: {

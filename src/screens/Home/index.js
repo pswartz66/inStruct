@@ -17,11 +17,11 @@ const Home = () => {
   const categoryList = [
     {
       id: 1,
-      header: 'Instructors'
+      header: 'Top Instructors'
     },
     {
       id: 2,
-      header: 'Sports'
+      header: 'Sports',
     },
     {
       id: 3,
@@ -191,7 +191,7 @@ const Home = () => {
             <Text style={styles.tagLine}>{item.header}</Text>
 
             {/* Vertical Flatlist */}
-            {item.header === 'Instructors' ? (
+            {item.header === 'Top Instructors' ? (
               <FlatList
                 style={{
                   backgroundColor: 'white',
@@ -211,7 +211,7 @@ const Home = () => {
               />
             ) : null}
 
-
+            {/* Horizontal Flatlist */}
             {item.header === 'Sports' ? (
               <FlatList
                 horizontal={true}
@@ -225,6 +225,7 @@ const Home = () => {
               />
             ) : null}
 
+            {/* Horizontal Flatlist */}
             {item.header === 'Education' ? (
               <FlatList
                 horizontal={true}

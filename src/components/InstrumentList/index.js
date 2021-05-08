@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, Dimensions, TouchableHighlight } from 'react-native';
-import styles from './styles'
+import { View, Text, TouchableHighlight, Dimensions } from 'react-native';
 
-const SportList = (props) => {
-  const { sport, navigate } = props;
 
-  console.log('SportList Navigation: ', navigate);
+const InstrumentList = (props) => {
+  const { instrument, navigate } = props;
 
   const [pressedStyle, setPressedStyle] = useState({
     color: '#f0f2f5',
@@ -52,10 +50,10 @@ const SportList = (props) => {
             color: pressedStyle.textColor
           }}
         >
-          {sport.sport}
+          {instrument.instrument}
         </Text>
       </View>
     </TouchableHighlight>
   )
 }
-export default SportList;
+export default InstrumentList;

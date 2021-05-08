@@ -8,8 +8,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import InstructorList from '../../components/InstructorList';
 import SportList from '../../components/SportList';
 import EducationList from '../../components/EducationList';
+import InstrumentList from '../../components/InstrumentList';
+import OtherList from '../../components/OtherList';
 
-const Home = () => {
+
+const Home = ({ navigation }) => {
+
+  // console.log(navigation);
 
   const [searchBarFocused, setSearchBarFocused] = useState(false);
 
@@ -45,23 +50,33 @@ const Home = () => {
   const instructorList = [
     {
       id: 1,
-      name: 'Joe'
+      name: 'Joe',
+      skill: 'basketball',
+      rating: '5',
     },
     {
       id: 2,
-      name: 'Sally'
+      name: 'Sally',
+      skill: 'baseball',
+      rating: '5',
     },
     {
       id: 3,
-      name: 'Anthony'
+      name: 'Anthony',
+      skill: 'math',
+      rating: '5',
     },
     {
       id: 4,
-      name: 'Matt'
+      name: 'Matt',
+      skill: 'finance',
+      rating: '5',
     },
     {
       id: 5,
-      name: 'Nicole'
+      name: 'Nicole',
+      skill: 'coding',
+      rating: '5',
     }
   ]
 
@@ -102,6 +117,36 @@ const Home = () => {
     {
       id: 4,
       subject: 'physcology'
+    },
+  ]
+
+  const instrumentList = [
+    {
+      id: 1,
+      instrument: 'piano',
+    },
+    {
+      id: 2,
+      instrument: 'guitar',
+    },
+    {
+      id: 3,
+      instrument: 'recording',
+    },
+  ]
+
+  const otherList = [
+    {
+      id: 1,
+      other: 'juggling',
+    },
+    {
+      id: 2,
+      other: 'painting',
+    },
+    {
+      id: 3,
+      other: 'drawing',
     },
   ]
 
@@ -218,7 +263,7 @@ const Home = () => {
                 data={sportList}
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item }) => <SportList sport={item} />}
+                renderItem={({ item }) => <SportList sport={item} {...navigation} />}
                 snapToAlignment={'start'}
                 decelerationRate={'fast'}
                 snapToInterval={Dimensions.get('window').width - 175}
@@ -232,7 +277,36 @@ const Home = () => {
                 data={educationList}
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item }) => <EducationList subject={item} />}
+                renderItem={({ item }) => <EducationList subject={item} {...navigation} />}
+                snapToAlignment={'start'}
+                decelerationRate={'fast'}
+                snapToInterval={Dimensions.get('window').width - 175}
+              />
+            ) : null}
+
+            {/* Horizontal Flatlist */}
+            {item.header === 'Instrument' ? (
+              <FlatList
+                horizontal={true}
+                data={instrumentList}
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({ item }) => <InstrumentList instrument={item} {...navigation} />}
+                snapToAlignment={'start'}
+                decelerationRate={'fast'}
+                snapToInterval={Dimensions.get('window').width - 175}
+              />
+            ) : null}
+
+
+            {/* Horizontal Flatlist */}
+            {item.header === 'Other' ? (
+              <FlatList
+                horizontal={true}
+                data={otherList}
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({ item }) => <OtherList other={item} {...navigation} />}
                 snapToAlignment={'start'}
                 decelerationRate={'fast'}
                 snapToInterval={Dimensions.get('window').width - 175}

@@ -16,6 +16,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'gray',
     borderRadius: 50,
     marginRight: 20,
+  },
+  bookmark: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 40
   }
 });
 

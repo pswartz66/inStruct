@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, Pressable, Dimensions } from 'react-native';
+import { View, Text, Dimensions, TouchableHighlight } from 'react-native';
 import styles from './styles'
 
 
 const EducationList = (props) => {
-  const { subject } = props;
+  const { subject, navigate } = props;
 
   const [pressedStyle, setPressedStyle] = useState({
     color: '#f0f2f5',
@@ -23,11 +23,18 @@ const EducationList = (props) => {
       textColor: 'black'
     });
   }
+  const navigatePress = () => {
+    navigate('Details');
+  }
 
   return (
-    <Pressable
-      onPressIn={onPressInFunction}
-      onPressOut={onPressOutFunction}
+    <TouchableHighlight
+      onShowUnderlay={onPressInFunction}
+      onHideUnderlay={onPressOutFunction}
+      onPress={navigatePress}
+      activeOpacity={0.9}
+      underlayColor={'#2679ff'}
+      style={{ margin: 10, borderRadius: 10, borderColor: 'white', borderWidth: 0.3 }}
     >
       <View style={{
         justifyContent: 'center',
@@ -35,10 +42,9 @@ const EducationList = (props) => {
         height: 90,
         width: Dimensions.get('window').width - 195,
         backgroundColor: pressedStyle.color,
-        borderRadius: 10,    
+        borderRadius: 10,
         borderColor: 'gray',
         borderWidth: 0.3,
-        margin: 10,
       }}>
         <Text
           style={{
@@ -48,7 +54,7 @@ const EducationList = (props) => {
           {subject.subject}
         </Text>
       </View>
-    </Pressable>
+    </TouchableHighlight>
   )
 }
 export default EducationList;

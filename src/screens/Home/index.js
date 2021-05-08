@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, FlatList, Keyboard, Dimensions } from 'react-native';
 import styles from './styles';
 import AppHeader from '../../components/AppHeader';

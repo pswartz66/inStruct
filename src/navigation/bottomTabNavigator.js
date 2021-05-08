@@ -7,8 +7,6 @@ import Learn from '../screens/Learn';
 import Profile from '../screens/Profile';
 
 import { Ionicons } from '@expo/vector-icons';
-// import { AntDesign } from '@expo/vector-icons';
-// import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 
 
@@ -26,12 +24,8 @@ const BottomTabNavigator = () => {
           paddingBottom: 30,
           marginTop: -1,
         },
-        // safeAreaInsets: { 
-        //   bottom: 10, 
-        // },
         style: {
           height: 90,
-          // paddingBottom: 40,
         },
         activeTintColor: 'white',
         inactiveTintColor: '#91bbff',

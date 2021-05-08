@@ -3,6 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import BottomTabNavigator from '../navigation/bottomTabNavigator';
 import DetailsScreen from '../screens/Details';
+import ProfileSettingsScreen from '../screens/ProfileSettings';
+
 
 const Stack = createStackNavigator();
 
@@ -31,21 +33,27 @@ const RootNavigation = (props) => {
             options={{ 
               title: "Our Instructors", 
               headerShown: true,
-              // headerLeft: () => (
-              //   <Button
-              //     onPress={() => alert('This is a button!')}
-              //     title="Info"
-              //     color="black"
-              //   />
-              // ),
               headerBackTitle: true,
               headerTitleStyle: {
                 color: 'black',
                 fontFamily: 'HelveticaNeue-Medium',
                 fontSize: 20,
-                
               }
-              
+            }}  
+          />
+
+          <Stack.Screen 
+            name="ProfileSettings"
+            component={ProfileSettingsScreen}
+            options={{ 
+              title: "Settings", 
+              headerShown: true,
+              headerBackTitle: true,
+              headerTitleStyle: {
+                color: 'black',
+                fontFamily: 'HelveticaNeue-Medium',
+                fontSize: 20,
+              }
             }}  
           />
         </Stack.Navigator>

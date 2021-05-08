@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, Button, TouchableOpacity, TouchableHighlight } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { Auth } from 'aws-amplify';
 import styles from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 
-const Profile = (props) => {
+const Profile = ({ navigation }) => {
   const userEmail = Auth.user.attributes.email;
 
   const stats = [
@@ -16,16 +16,25 @@ const Profile = (props) => {
     },
   ];
 
+  const navigateClick = () => {
+    console.log('clicked');
+    navigation.navigate('ProfileSettings');
+  }
+
   return (
     <SafeAreaView style={styles.profContainer}>
       <View style={styles.settingsIcon}>
-        <Ionicons name="settings-sharp" size={26} color="black" />
+        <TouchableOpacity onPress={navigateClick}>
+
+          <Ionicons name="settings-sharp" size={26} color="black" />
+        </TouchableOpacity>
+
       </View>
 
 
-        <View style={styles.profImage}>
-          <Text>Add image</Text>
-        </View>
+      <View style={styles.profImage}>
+        <Text>Add image</Text>
+      </View>
 
 
       <Text style={styles.username}>{userEmail.toLowerCase()}</Text>

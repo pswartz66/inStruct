@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import { Entypo } from '@expo/vector-icons';
 
@@ -39,27 +39,12 @@ const DetailsScreen = (props) => {
       name: 'Alisha',
       skill: 'drawing'
     },
-    {
-      id: 5,
-      name: 'Alisha',
-      skill: 'drawing'
-    },
-    {
-      id: 5,
-      name: 'Alisha',
-      skill: 'drawing'
-    },
-    {
-      id: 5,
-      name: 'Alisha',
-      skill: 'drawing'
-    },
-    {
-      id: 5,
-      name: 'Alisha',
-      skill: 'drawing'
-    },
   ]
+
+  const navigateToBooking = (itm) => {
+    console.log('navigate to availability for', itm);
+  }
+
 
   return (
     <View style={styles.detailsContainer}>
@@ -71,30 +56,21 @@ const DetailsScreen = (props) => {
 
         <View style={styles.detailDataList}>
           {tempData.map((item) => (
-
-            <View style={styles.detailCards}>
-
+            <View key={item.id} style={styles.detailCards}>
               <View style={styles.detailsCardInner}>
-
-                <View style={styles.detailsProfImg}></View>
-
+                <View style={styles.detailsProfImg}><Text>Img placeholder</Text></View>
                 <View style={styles.detailsBottomCard}>
-
-
-                <Text style={{ fontSize: 16, fontWeight: '500' }}>
-                  {item.name}
-                </Text>
-
-
-                  <Entypo name="plus" size={24} color="#2679ff" />
+                  <Text style={{ fontSize: 16, fontWeight: '500' }}>
+                    {item.name}
+                  </Text>
+                  <View style={{ position: 'absolute', top: 22, right: 6, bottom: 0 }}>
+                    <TouchableOpacity onPress={() => navigateToBooking(item.name)}>
+                      <Entypo name="plus" size={24} color="#2679ff" />
+                    </TouchableOpacity>
+                  </View>
                 </View>
-
-
-
               </View>
-
             </View>
-
           ))}
         </View>
       </ScrollView>

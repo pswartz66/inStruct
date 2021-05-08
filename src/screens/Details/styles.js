@@ -46,23 +46,25 @@ const styles = StyleSheet.create({
   detailsCardInner: {
     height: 180,
     width: '90%',
-    padding: 10,
     backgroundColor: 'white',
     borderRadius: 10,
     margin: 10,
   },
   detailsProfImg: {
-    height: 100,
+    height: 120,
     width: '100%',
-    borderRadius: 6,
-    backgroundColor: 'gray',
+    borderTopLeftRadius: 6,
+    borderTopRightRadius: 6,
+    backgroundColor: '#dedede',
     marginBottom: 6,
+    zIndex: -1
   },
   detailsBottomCard: {
     flexDirection: 'column',
-    justifyContent: 'center',
-    alignSelf: 'flex-end',
-    alignItems: 'center',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
+    height: 45,
+    paddingLeft: 10
   }
 });
 

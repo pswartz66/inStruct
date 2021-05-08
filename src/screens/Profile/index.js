@@ -3,6 +3,7 @@ import { View, Text, Button, TouchableOpacity, TouchableHighlight } from 'react-
 import { Auth } from 'aws-amplify';
 import styles from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 
 const Profile = (props) => {
   const userEmail = Auth.user.attributes.email;
@@ -17,9 +18,15 @@ const Profile = (props) => {
 
   return (
     <SafeAreaView style={styles.profContainer}>
-      <View style={styles.profImage}>
-        <Text>Add image</Text>
+      <View style={styles.settingsIcon}>
+        <Ionicons name="settings-sharp" size={26} color="black" />
       </View>
+
+
+        <View style={styles.profImage}>
+          <Text>Add image</Text>
+        </View>
+
 
       <Text style={styles.username}>{userEmail.toLowerCase()}</Text>
       <Text style={styles.memberSince}>Member since 2020</Text>
@@ -42,14 +49,14 @@ const Profile = (props) => {
       </View>
 
       <View style={styles.profHoursOfCompletion}>
-          <Text>Hours of completion</Text>
+        <Text>Hours of completion</Text>
       </View>
 
       <View style={styles.profContentOther}>
         <Text style={styles.profContentAbout}>Tell us about yourself..</Text>
 
       </View>
-      
+
       <TouchableOpacity style={styles.signOutBtn} onPress={() => Auth.signOut()}>
         <Text style={styles.signOutBtnText}>Sign Out</Text>
       </TouchableOpacity>

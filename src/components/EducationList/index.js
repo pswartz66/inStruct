@@ -24,7 +24,7 @@ const EducationList = (props) => {
     });
   }
   const navigatePress = () => {
-    navigate('Details');
+    navigate('Details', { data: subject.subject });
   }
 
   return (

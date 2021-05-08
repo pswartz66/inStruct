@@ -39,6 +39,12 @@ const RootNavigation = (props) => {
               //   />
               // ),
               headerBackTitle: true,
+              headerTitleStyle: {
+                color: 'black',
+                fontFamily: 'HelveticaNeue-Medium',
+                fontSize: 20,
+                
+              }
               
             }}  
           />

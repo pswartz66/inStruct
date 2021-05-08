@@ -7,7 +7,11 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     backgroundColor: 'white',
-
+  },
+  settingsIcon: {
+    top: 55,
+    left: 10,
+    position: 'absolute'
   },
   profImage: {
     justifyContent: 'center',

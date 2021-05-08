@@ -23,7 +23,7 @@ const OtherList = (props) => {
     });
   }
   const navigatePress = () => {
-    navigate('Details');
+    navigate('Details', { data: other.other });
   }
 
   return (

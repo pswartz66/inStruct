@@ -25,7 +25,7 @@ const SportList = (props) => {
     });
   }
   const navigatePress = () => {
-    navigate('Details');
+    navigate('Details', { data: sport.sport });
   }
 
   return (

@@ -11,6 +11,9 @@ const InstructorList = (props) => {
 
   console.log(instructor);
 
+  // fetch top 5 instructors from database
+  // determine what meets criteria for "top 5" - # of meetups & positive reviews
+  
 
 
   return (

@@ -313,14 +313,20 @@ const Home = ({ navigation }) => {
               />
             ) : null}
 
+            {item.header === 'Reccomendations' ? (
+              <TextInput
+                style={styles.reccomendInput}
+                placeholder={`${"Tell us what you'd like to learn"}`}
+              />
+
+            ) : null}
+
           </View>
+
         }
       />
 
-      <TextInput
-        style={styles.reccomendInput}
-        placeholder={`${"Tell us what you'd like to learn"}`}
-      />
+
 
     </SafeAreaView>
 

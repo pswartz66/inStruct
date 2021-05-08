@@ -23,7 +23,7 @@ const InstrumentList = (props) => {
     });
   }
   const navigatePress = () => {
-    navigate('Details');
+    navigate('Details', { data: instrument.instrument });
   }
 
   return (

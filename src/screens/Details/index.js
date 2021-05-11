@@ -7,7 +7,7 @@ import { Entypo } from '@expo/vector-icons';
 const DetailsScreen = (props) => {
 
   const { data } = props.route.params;
-
+  const { navigate } = props.navigation;
   console.log('Detail: ', data);
 
   // fetch all instructors from database skilled in "data" 
@@ -43,6 +43,7 @@ const DetailsScreen = (props) => {
 
   const navigateToBooking = (itm) => {
     console.log('navigate to availability for', itm);
+    navigate('Connect');
   }
 
 
@@ -64,8 +65,14 @@ const DetailsScreen = (props) => {
                     {item.name}
                   </Text>
                   <View style={{ position: 'absolute', top: 22, right: 6, bottom: 0 }}>
-                    <TouchableOpacity onPress={() => navigateToBooking(item.name)}>
-                      <Entypo name="plus" size={24} color="#2679ff" />
+                    <TouchableOpacity 
+                      style={{
+                        backgroundColor: '#2679ff',
+                        borderRadius: 12,
+                        marginRight: 4,
+                      }}
+                      onPress={() => navigateToBooking(item.name)}>
+                      <Entypo name="plus" size={20} color="white" />
                     </TouchableOpacity>
                   </View>
                 </View>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, FlatList, Keyboard, Dimensions } from 'react-native';
+import { View, Text, TextInput, FlatList, Keyboard, Dimensions, KeyboardAvoidingView } from 'react-native';
 import styles from './styles';
 import AppHeader from '../../components/AppHeader';
 import { Feather } from '@expo/vector-icons';
@@ -205,7 +205,6 @@ const Home = ({ navigation }) => {
             }}
             placeholder={'Search...'}
             onFocus={() => searchBarClicked()}
-            onPressIn={() => fadeIn()}
 
           />
         </View>
@@ -250,7 +249,7 @@ const Home = ({ navigation }) => {
                 data={instructorList}
                 showsVerticalScrollIndicator={true}
                 keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item }) => <InstructorList instructor={item} />}
+                renderItem={({ item }) => <InstructorList instructor={item} {...navigation}/>}
                 snapToAlignment={'start'}
                 decelerationRate={'fast'}
               />
@@ -314,10 +313,13 @@ const Home = ({ navigation }) => {
             ) : null}
 
             {item.header === 'Reccomendations' ? (
-              <TextInput
-                style={styles.reccomendInput}
-                placeholder={`${"Tell us what you'd like to learn"}`}
-              />
+              /* need to add some type of keyboard behavior here
+                since it currently gets blocked
+              */
+                <TextInput
+                  style={styles.reccomendInput}
+                  placeholder={`${"Tell us what you'd like to learn"}`}
+                />
 
             ) : null}
 

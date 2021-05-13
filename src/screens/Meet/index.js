@@ -2,12 +2,14 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const Meet = () => {
+const Meet = (props) => {
+  const { instructor } = props.route.params;
+  console.log(instructor);
 
   return (
     <SafeAreaView>
       <Text>
-        Meet Screen: where you will book a time with an instructor
+        Schedule a meeting with {instructor}
       </Text>
     </SafeAreaView>
   )

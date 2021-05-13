@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
+import { Auth } from 'aws-amplify';
 
 
 const ProfileSettingsScreen = () => {
@@ -65,7 +66,14 @@ const ProfileSettingsScreen = () => {
           </View>
         </TouchableOpacity>
 
+        
       </View>
+
+      <TouchableOpacity onPress={() => Auth.signOut()}>
+          {/* <View style={styles.settingsRow}> */}
+            <Text style={styles.settingsSignOut}>Sign Out</Text>
+          {/* </View> */}
+        </TouchableOpacity>
 
     </View>
   )

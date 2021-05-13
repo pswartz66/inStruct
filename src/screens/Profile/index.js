@@ -57,18 +57,6 @@ const Profile = ({ navigation }) => {
 
       </View>
 
-      <View style={styles.profHoursOfCompletion}>
-        <Text>Hours of completion</Text>
-      </View>
-
-      <View style={styles.profContentOther}>
-        <Text style={styles.profContentAbout}>Tell us about yourself..</Text>
-
-      </View>
-
-      <TouchableOpacity style={styles.signOutBtn} onPress={() => Auth.signOut()}>
-        <Text style={styles.signOutBtnText}>Sign Out</Text>
-      </TouchableOpacity>
 
     </SafeAreaView>
   )

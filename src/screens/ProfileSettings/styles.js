@@ -39,6 +39,15 @@ const styles = StyleSheet.create({
   settingsIcons: {
     marginLeft: 2,
     marginRight: 15
+  },
+  settingsSignOut: {
+    textAlign: 'center',
+    height: 40,
+    width: Dimensions.get('window').width,
+    fontSize: 18,
+    color: '#2679ff',
+    fontWeight: '700',
+    marginTop:20,
   }
 });
 

@@ -15,7 +15,7 @@ const InstructorList = (props) => {
 
   const navigateToBooking = (itm) => {
     console.log('navigate to availability for', itm);
-    navigate('Connect');
+    navigate('Meet', { instructor: itm});
   }
 
   return (

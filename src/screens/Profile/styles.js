@@ -64,38 +64,11 @@ const styles = StyleSheet.create({
     fontFamily: 'HelveticaNeue-Thin',
     color: 'black',
   },
-  profContentOther: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    backgroundColor: 'gray',
-    padding: 10,
-    height: 100,
-    width: '100%',
-  },
-  profHoursOfCompletion: {
-    height: 50,
-    width: '100%',
-    backgroundColor: 'orange',
-
-  },
   profContentAbout: {
     fontSize: 18,
     fontFamily: 'HelveticaNeue-Thin',
     color: 'black',
   },
-  signOutBtn: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 60,
-    width: '100%',
-    backgroundColor: '#e8e8e8'
-  },
-  signOutBtnText: {
-    fontSize: 18,
-    fontFamily: 'HelveticaNeue-Medium',
-    color: '#2679ff'
-  }
 
 });
 

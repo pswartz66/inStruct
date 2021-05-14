@@ -11,12 +11,12 @@ const styles = StyleSheet.create({
   appNameIn: {
     color: '#191a1c',
     fontFamily: 'HelveticaNeue-Medium',
-    fontSize: 26,
+    fontSize: 24,
   },
   appNameStruct: {
     color: '#2679ff',
     fontFamily: 'HelveticaNeue-Medium',
-    fontSize: 26,
+    fontSize: 24,
   }
 });
 

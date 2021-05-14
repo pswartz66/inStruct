@@ -31,8 +31,11 @@ const styles = StyleSheet.create({
   },
   calendarClickView: {
     flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 10
+    paddingVertical: 10,
+    backgroundColor: '#f0f2f5',
+    
   },
   calendarDay: {
     color: 'black',

@@ -8,28 +8,24 @@ const Meet = (props) => {
   const { instructor } = props.route.params;
   console.log(instructor);
 
-  const [ dayClicked, setDayClicked ] = useState({
-    day: null
-  });
+  const [dayClicked, setDayClicked] = useState({ day: null });
 
   const whatDay = (dateAsString) => {
     const { dateString } = dateAsString;
-
     setDayClicked({
       day: dateString
     })
-
-    console.log( dateString );
   }
 
   return (
-    <SafeAreaView style={{ backgroundColor: 'white', flex: 1}}>
+    <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
       <View style={styles.greetingTop}>
         <Text style={styles.greet}>Meet with your instructor </Text>
         <Text style={styles.greetName}>{instructor}.</Text>
       </View>
       <View style={styles.calendarWrapper}>
         <CalendarList
+          minDate={Date.now()}
           // Callback which gets executed when visible months change in scroll view. Default = undefined
           // onVisibleMonthsChange={(months) => { console.log('now these months are visible', months); }}
           // Max amount of months allowed to scroll to the past. Default = 50
@@ -41,7 +37,7 @@ const Meet = (props) => {
           // Enable or disable vertical scroll indicator. Default = false
           showScrollIndicator={true}
           // ...calendarParams
-          onDayPress={day => {whatDay(day)}}
+          onDayPress={day => { whatDay(day) }}
         />
 
       </View>
@@ -50,6 +46,9 @@ const Meet = (props) => {
         <Text style={styles.calendarDay}>
           {dayClicked.day}
         </Text>
+
+
+
       </View>
 
     </SafeAreaView>

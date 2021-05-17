@@ -37,7 +37,7 @@ const BottomTabNavigator = () => {
         component={Home}
         options={{
           tabBarIcon: ({ color }) => (
-            <Feather name={'search'} size={25} color={color} />
+            <Feather name={'search'} size={25} color={color} /> 
           )
         }}
       />

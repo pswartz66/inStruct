@@ -35,13 +35,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 10,
     backgroundColor: '#f0f2f5',
+    marginBottom: 12,
     
   },
   calendarDay: {
     color: 'black',
     fontFamily: 'HelveticaNeue-Medium',
     fontSize: 18,
-  }
+  },
+
 });
 
 export default styles;

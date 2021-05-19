@@ -92,7 +92,11 @@ const Meet = (props) => {
               showScrollIndicator={true}
               // ...calendarParams
               onDayPress={day => { whatDay(day) }}
+              markedDates={{
+                [dayClicked.day]: {selected: true, selectedColor: '#2679ff'}
+              }}
             />
+            
           </View>
           <View style={styles.calendarClickView}>
             <Text style={styles.calendarDay}>

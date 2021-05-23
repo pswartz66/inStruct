@@ -46,7 +46,7 @@ const TimeList = (props) => {
         activeOpacity={0.9}
         underlayColor={'#2679ff'}
         style={{
-          marginTop: 15,
+          marginTop: 8,
           marginRight: 10, 
           marginLeft: 10,
           borderRadius: 10, 

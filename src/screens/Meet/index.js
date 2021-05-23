@@ -28,43 +28,43 @@ const Meet = (props) => {
   const timeOpen = [
     {
       id: 1,
-      time: '9:00 am'
+      time: '9:00am'
     },
     {
       id: 2,
-      time: '10:00 am'
+      time: '10:00am'
     },
     {
       id: 3,
-      time: '11:00 am'
+      time: '11:00am'
     },
     {
       id: 4,
-      time: '12:00 am'
+      time: '12:00am'
     },
     {
       id: 5,
-      time: '1:00 pm'
+      time: '1:00pm'
     },
     {
       id: 6,
-      time: '2:00 pm'
+      time: '2:00pm'
     },
     {
       id: 7,
-      time: '3:00 pm'
+      time: '3:00pm'
     },
     {
       id: 8,
-      time: '4:00 pm'
+      time: '4:00pm'
     },
     {
       id: 9,
-      time: '5:00 pm'
+      time: '5:00pm'
     },
     {
       id: 10,
-      time: '6:00 pm'
+      time: '6:00pm'
     },
   ]
 
@@ -110,9 +110,9 @@ const Meet = (props) => {
               data={timeOpen}
               showsHorizontalScrollIndicator={false}
               keyExtractor={(item, index) => index.toString()}
-              renderItem={({ item }) => <TimeList 
-                day={dayClicked.day} 
-                time={item} 
+              renderItem={({ item }) => <TimeList
+                day={dayClicked.day}
+                time={item}
                 name={props.route.params.instructor}
                 navigate={navigate} />}
               snapToAlignment={'start'}
@@ -122,6 +122,11 @@ const Meet = (props) => {
             />
           </View>
 
+          <View style={styles.instructorCardMeet}>
+            <View style={styles.cardInner}>
+              <Text>Instructor Image here</Text>
+            </View>
+          </View>
 
         </>
 

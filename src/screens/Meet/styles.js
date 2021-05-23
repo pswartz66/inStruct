@@ -36,13 +36,34 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     backgroundColor: '#f0f2f5',
     marginBottom: 12,
-    
+
   },
   calendarDay: {
     color: 'black',
     fontFamily: 'HelveticaNeue-Medium',
     fontSize: 18,
   },
+  instructorCardMeet: {
+    height: 130,
+    marginHorizontal: 2,
+    justifyContent: 'center'
+    // backgroundColor: 'red',
+  },
+  cardInner: {
+    height: 130,
+    margin: 10,
+    padding: 10,
+    borderRadius: 10,
+    backgroundColor: '#f0f2f5',
+    shadowColor: 'black',
+    shadowRadius: 4,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: .3
+
+  }
 
 });
 

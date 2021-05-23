@@ -20,8 +20,6 @@ const BookAppointment = (props) => {
         <Text style={styles.appointmentSubText}>{day}</Text>
         <Text style={styles.appointmentSubText}>{time}</Text>
 
-
-
         <TouchableHighlight style={{
           height: 40,
           width: 200,
@@ -32,7 +30,7 @@ const BookAppointment = (props) => {
 
         }}>
           <Text>Book</Text>
-          
+
         </TouchableHighlight>
 
       </View>

@@ -93,28 +93,35 @@ const Meet = (props) => {
               // ...calendarParams
               onDayPress={day => { whatDay(day) }}
               markedDates={{
-                [dayClicked.day]: {selected: true, selectedColor: '#2679ff'}
+                [dayClicked.day]: { selected: true, selectedColor: '#2679ff' }
               }}
             />
-            
+
           </View>
           <View style={styles.calendarClickView}>
             <Text style={styles.calendarDay}>
-              {dayClicked.day}
+              {dayClicked.day ? dayClicked.day : <Text>Select date above</Text>}
             </Text>
           </View>
 
-          <FlatList
-            horizontal={true}
-            data={timeOpen}
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item }) => <TimeList time={item} navigate={navigate} />}
-            snapToAlignment={'start'}
-            decelerationRate={'fast'}
-            snapToInterval={Dimensions.get('window').width - 240}
-          />
-          
+          <View style={{ height: 80 }}>
+            <FlatList
+              horizontal={true}
+              data={timeOpen}
+              showsHorizontalScrollIndicator={false}
+              keyExtractor={(item, index) => index.toString()}
+              renderItem={({ item }) => <TimeList 
+                day={dayClicked.day} 
+                time={item} 
+                name={props.route.params.instructor}
+                navigate={navigate} />}
+              snapToAlignment={'start'}
+              decelerationRate={'fast'}
+              snapToInterval={Dimensions.get('window').width - 240}
+
+            />
+          </View>
+
 
         </>
 

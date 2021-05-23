@@ -4,7 +4,7 @@ import { View, Text, TouchableHighlight, Dimensions } from 'react-native';
 
 const TimeList = (props) => {
 
-  const { time, navigate } = props;
+  const { day, time, name, navigate } = props;
 
   const [pressedStyle, setPressedStyle] = useState({
     color: '#f0f2f5',
@@ -25,24 +25,39 @@ const TimeList = (props) => {
   }
 
   const navigatePress = () => {
-    navigate('BookAppointment', { data: time });
+    if (day === null) {
+      alert('Please select a day from the calendar above.')
+    } else {
+      navigate('BookAppointment', { data: {
+        day: day,
+        time: time.time,
+        name: name
+      }});
+    }
   }
 
 
   return (
-    <View>
+    <View style={{ height: 80 }}>
       <TouchableHighlight
         onShowUnderlay={onPressInFunction}
         onHideUnderlay={onPressOutFunction}
         onPress={navigatePress}
         activeOpacity={0.9}
         underlayColor={'#2679ff'}
-        style={{ margin: 10, borderRadius: 10, borderColor: 'white', borderWidth: 0.3 }}
+        style={{
+          marginTop: 15,
+          marginRight: 10, 
+          marginLeft: 10,
+          borderRadius: 10, 
+          borderColor: 'white', 
+          borderWidth: 0.3 }}
       >
         <View style={{
           justifyContent: 'center',
           alignItems: 'center',
-          height: 40,
+          marginTop: 0,
+          height: 45,
           width: Dimensions.get('window').width - 260,
           backgroundColor: pressedStyle.color,
           borderRadius: 10,

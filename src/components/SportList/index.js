@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, Dimensions, TouchableHighlight } from 'react-native';
-import styles from './styles'
+import { View, Text, Dimensions, TouchableHighlight, ImageBackground } from 'react-native';
+
 
 const SportList = (props) => {
   const { sport, navigate } = props;
@@ -37,24 +37,30 @@ const SportList = (props) => {
       underlayColor={'#2679ff'}
       style={{ margin: 10, borderRadius: 10, borderColor: 'white', borderWidth: 0.3 }}
     >
-      <View style={{
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: 90,
-        width: Dimensions.get('window').width - 195,
-        backgroundColor: pressedStyle.color,
-        borderRadius: 10,
-        borderColor: 'gray',
-        borderWidth: 0.3,
-      }}>
-        <Text
-          style={{
-            color: pressedStyle.textColor
-          }}
-        >
-          {sport.sport}
-        </Text>
-      </View>
+      <ImageBackground source={sport.image}
+        style={{ 
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: 90,
+          width: Dimensions.get('window').width - 195,
+          backgroundColor: pressedStyle.color,
+          borderRadius: 10,
+        }}
+        imageStyle={{
+          borderRadius: 10,
+          borderWidth: 0.3,
+          borderColor: 'gray',
+        }}
+      >
+          <Text
+            style={{
+              color: pressedStyle.textColor,
+              fontSize: 16
+            }}
+          >
+            {sport.sport}
+          </Text>
+      </ImageBackground>
     </TouchableHighlight>
   )
 }

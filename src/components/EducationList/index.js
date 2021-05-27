@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View, Text, Dimensions, TouchableHighlight } from 'react-native';
-import styles from './styles'
 
 
 const EducationList = (props) => {
@@ -48,7 +47,8 @@ const EducationList = (props) => {
       }}>
         <Text
           style={{
-            color: pressedStyle.textColor
+            color: pressedStyle.textColor,
+            fontSize: 16
           }}
         >
           {subject.subject}

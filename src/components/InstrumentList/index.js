@@ -47,7 +47,8 @@ const InstrumentList = (props) => {
       }}>
         <Text
           style={{
-            color: pressedStyle.textColor
+            color: pressedStyle.textColor,
+            fontSize: 16
           }}
         >
           {instrument.instrument}

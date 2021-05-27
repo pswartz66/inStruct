@@ -11,6 +11,12 @@ import EducationList from '../../components/EducationList';
 import InstrumentList from '../../components/InstrumentList';
 import OtherList from '../../components/OtherList';
 
+const basketball = '../../assets/images/sports/basketball.jpeg';
+const baseball = '../../assets/images/sports/baseball.jpeg';
+const tennis = '../../assets/images/sports/tennis.jpeg';
+const boxing = '../../assets/images/sports/boxing.jpeg';
+
+
 
 const Home = ({ navigation }) => {
 
@@ -84,19 +90,24 @@ const Home = ({ navigation }) => {
   const sportList = [
     {
       id: 1,
-      sport: 'basketball'
+      sport: 'basketball',
+      image: require(basketball),
     },
     {
       id: 2,
-      sport: 'baseball'
+      sport: 'baseball',
+      image: require(baseball),
     },
     {
       id: 3,
-      sport: 'tennis'
+      sport: 'tennis',
+      image: require(tennis),
+
     },
     {
       id: 4,
-      sport: 'boxing'
+      sport: 'boxing',
+      image: require(boxing),
     },
   ]
 

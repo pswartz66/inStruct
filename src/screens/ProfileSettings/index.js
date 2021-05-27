@@ -6,16 +6,24 @@ import { FontAwesome } from '@expo/vector-icons';
 import { Auth } from 'aws-amplify';
 
 
-const ProfileSettingsScreen = () => {
+const ProfileSettingsScreen = (props) => {
+
+  const { navigate } = props.navigation;
+
+  console.log(props);
 
   const navigateToEdit = () => {
     console.log('navigate to edit profile');
+    navigate('EditProfile');
   }
   const navigateToPrivacy = () => {
     console.log('navigate to privacy');
   }
   const navigateToNotifcations = () => {
-    console.log('navigate to change notifications');
+    console.log('navigate to notifications');
+  }
+  const navigateToChangeEmail = () => {
+    console.log('navigate to change email');
   }
   const navigateToChangePhone = () => {
     console.log('navigate to change phone');
@@ -56,6 +64,16 @@ const ProfileSettingsScreen = () => {
           </View>
         </TouchableOpacity>
 
+        <TouchableOpacity onPress={navigateToChangeEmail}>
+
+          <View style={styles.settingsRow}>
+            <View style={styles.settingsIcons}>
+              <Ionicons name="mail-sharp" size={20} color="gray" />
+            </View>
+            <Text>Change Email</Text>
+          </View>
+        </TouchableOpacity>
+
         <TouchableOpacity onPress={navigateToChangePhone}>
 
           <View style={styles.settingsRow}>
@@ -66,14 +84,14 @@ const ProfileSettingsScreen = () => {
           </View>
         </TouchableOpacity>
 
-        
+
       </View>
 
       <TouchableOpacity onPress={() => Auth.signOut()}>
-          {/* <View style={styles.settingsRow}> */}
-            <Text style={styles.settingsSignOut}>Sign Out</Text>
-          {/* </View> */}
-        </TouchableOpacity>
+        {/* <View style={styles.settingsRow}> */}
+        <Text style={styles.settingsSignOut}>Sign Out</Text>
+        {/* </View> */}
+      </TouchableOpacity>
 
     </View>
   )

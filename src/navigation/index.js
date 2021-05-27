@@ -4,8 +4,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import BottomTabNavigator from '../navigation/bottomTabNavigator';
 import DetailsScreen from '../screens/Details';
 import ProfileSettingsScreen from '../screens/ProfileSettings';
+import EditProfileScreen from '../screens/EditProfile';
 import BookAppointmentScreen from '../screens/BookAppointment';
-
 
 
 const Stack = createStackNavigator();
@@ -49,6 +49,21 @@ const RootNavigation = (props) => {
           component={ProfileSettingsScreen}
           options={{
             title: "Settings",
+            headerShown: true,
+            headerBackTitle: true,
+            headerTitleStyle: {
+              color: 'black',
+              fontFamily: 'HelveticaNeue-Medium',
+              fontSize: 20,
+            }
+          }}
+        />
+
+        <Stack.Screen
+          name="EditProfile"
+          component={EditProfileScreen}
+          options={{
+            title: "Edit Profile",
             headerShown: true,
             headerBackTitle: true,
             headerTitleStyle: {

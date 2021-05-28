@@ -16,6 +16,18 @@ const baseball = '../../assets/images/sports/baseball.jpeg';
 const tennis = '../../assets/images/sports/tennis.jpeg';
 const boxing = '../../assets/images/sports/boxing.jpeg';
 
+const math = '../../assets/images/education/math.jpeg';
+const physcology = '../../assets/images/education/physcology.jpeg';
+const finance = '../../assets/images/education/finance.jpeg';
+const coding = '../../assets/images/education/coding.jpeg';
+
+const piano = '../../assets/images/instrument/piano.jpeg';
+const guitar = '../../assets/images/instrument/guitar.jpeg';
+const recording = '../../assets/images/instrument/recording.jpeg';
+
+const drawing = '../../assets/images/other/drawing.jpeg';
+const painting = '../../assets/images/other/painting.jpeg';
+const juggling = '../../assets/images/other/juggling.jpeg';
 
 
 const Home = ({ navigation }) => {
@@ -115,19 +127,23 @@ const Home = ({ navigation }) => {
   const educationList = [
     {
       id: 1,
-      subject: 'math'
+      subject: 'math',
+      image: require(math),
     },
     {
       id: 2,
-      subject: 'finance'
+      subject: 'finance',
+      image: require(finance),
     },
     {
       id: 3,
-      subject: 'coding'
+      subject: 'coding',
+      image: require(coding),
     },
     {
       id: 4,
-      subject: 'physcology'
+      subject: 'physcology',
+      image: require(physcology),
     },
   ]
 
@@ -135,14 +151,18 @@ const Home = ({ navigation }) => {
     {
       id: 1,
       instrument: 'piano',
+      image: require(piano),
+
     },
     {
       id: 2,
       instrument: 'guitar',
+      image: require(guitar),
     },
     {
       id: 3,
       instrument: 'recording',
+      image: require(recording),
     },
   ]
 
@@ -150,14 +170,17 @@ const Home = ({ navigation }) => {
     {
       id: 1,
       other: 'juggling',
+      image: require(juggling),
     },
     {
       id: 2,
       other: 'painting',
+      image: require(painting),
     },
     {
       id: 3,
       other: 'drawing',
+      image: require(drawing),
     },
   ]
 

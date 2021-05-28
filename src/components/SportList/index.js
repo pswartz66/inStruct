@@ -33,7 +33,7 @@ const SportList = (props) => {
       onShowUnderlay={onPressInFunction}
       onHideUnderlay={onPressOutFunction}
       onPress={navigatePress}
-      activeOpacity={0.9}
+      activeOpacity={1}
       underlayColor={'#2679ff'}
       style={{ margin: 10, borderRadius: 10, borderColor: 'white', borderWidth: 0.3 }}
     >
@@ -50,12 +50,15 @@ const SportList = (props) => {
           borderRadius: 10,
           borderWidth: 0.3,
           borderColor: 'gray',
+          opacity: 0.8
         }}
       >
           <Text
             style={{
               color: pressedStyle.textColor,
-              fontSize: 16
+              fontSize: 18,
+              fontFamily: 'HelveticaNeue-Bold',
+              letterSpacing: 0.5,
             }}
           >
             {sport.sport}

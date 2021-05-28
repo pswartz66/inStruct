@@ -22,7 +22,7 @@ const BottomTabNavigator = () => {
           backgroundColor: '#2679ff',
           height: 90,
           paddingBottom: 30,
-          marginTop: -1,
+          marginTop: -2,
         },
         style: {
           height: 90,

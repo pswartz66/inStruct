@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableHighlight } from 'react-native';
+import { View, Text, TextInput, TouchableHighlight, Button, FlatList, TouchableOpacity, Dimensions } from 'react-native';
 import styles from './styles';
 
-
 const EditProfileScreen = () => {
-  const [role, setRole] = useState('none')
+  const [role, setRole] = useState('');
+  const [selectedId, setSelectedId] = useState(null)
   const [userRole, setUserRole] = useState({
     type: 'none',
     color: '#dbdbdb'
@@ -36,9 +36,90 @@ const EditProfileScreen = () => {
     })
   }
 
+
+  const skillList = [
+    {
+      id: 1,
+      skill: 'basketball'
+    },
+    {
+      id: 2,
+      skill: 'baseball'
+    },
+    {
+      id: 3,
+      skill: 'tennis'
+    },
+    {
+      id: 4,
+      skill: 'boxing'
+    },
+    {
+      id: 5,
+      skill: 'math'
+    },
+    {
+      id: 6,
+      skill: 'finance'
+    },
+    {
+      id: 7,
+      skill: 'coding'
+    },
+    {
+      id: 8,
+      skill: 'physcology'
+    },
+    {
+      id: 9,
+      skill: 'piano'
+    },
+    {
+      id: 10,
+      skill: 'guitar'
+    },
+    {
+      id: 11,
+      skill: 'recording'
+    },
+    {
+      id: 12,
+      skill: 'juggling'
+    },
+    {
+      id: 13,
+      skill: 'painting'
+    },
+    {
+      id: 14,
+      skill: 'drawing'
+    },
+  ]
+
   return (
     <View>
       <View style={styles.editProfileContainer}>
+
+
+        <View style={styles.editProfileCol}>
+          <TouchableOpacity
+
+          >
+            <View style={{
+              height: 120,
+              width: 120,
+              backgroundColor: '#dbdbdb',
+              borderRadius: 100,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+              <Text>Profile image</Text>
+            </View>
+          </TouchableOpacity>
+
+        </View>
+
+
 
         <View style={styles.editProfileCol}>
           <Text style={styles.editHeader}>Select your role: {role}</Text>
@@ -82,56 +163,95 @@ const EditProfileScreen = () => {
 
 
 
-        <View style={styles.editProfileCol}>
-          <View style={styles.editProfileRow}>
-            <TouchableHighlight>
-              <View style={{
-                height: 75,
-                width: 300,
-                backgroundColor: '#dbdbdb',
-                borderRadius: 10,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-                <Text>Choose a profile image</Text>
-              </View>
-            </TouchableHighlight>
-
-          </View>
-        </View>
-
-
-
         {role === 'Instructor' ?
 
           <View style={styles.editProfileCol}>
-            <View style={styles.editProfileRow}>
-              
-              <TextInput
+            <View style={styles.editProfileSkillRow}>
+              <Text
                 style={{
-                  height: 40,
-                  width: 300,
-                  padding: 10,
-                  borderRadius: 10,
-                  backgroundColor: 'white'
-                
+                  fontSize: 20,
+                  fontFamily: 'HelveticaNeue-Medium',
                 }}
-                // onChangeText={confirmationCode => onChangeConfirmationCode(confirmationCode)}
-                // value={confirmationCode}
-                placeholder={'Type your skill here'}
-              />
+              >Your skill:   </Text>
 
+              <View>
+
+                <FlatList
+                  data={skillList}
+                  vertical={true}
+                  showsVerticalScrollIndicator={false}
+                  keyExtractor={(item, index) => index.toString()}
+                  renderItem={({ item }) => {
+                    
+                    const color = item.id === selectedId ? '#2679ff' : 'black';
+
+                    return (
+                      <TouchableOpacity
+                        activeOpacity={0.5}
+                        onPress={() => setSelectedId(item.id)}
+                        style={{
+                          height: 100,
+                          paddingTop: 39,
+                        }}
+                      >
+                        <Text
+                          style={{
+                            fontSize: 20,
+                            fontFamily: 'HelveticaNeue-Bold',
+                            color: color,
+                            letterSpacing: 0.4,
+                            textAlign: 'center'
+                          }}
+                        >
+                          {item.skill}
+                        </Text>
+                      </TouchableOpacity>
+                    )
+                  }
+                  }
+                  snapToAlignment={'start'}
+                  decelerationRate={'fast'}
+                  snapToInterval={100}
+                />
+
+              </View>
             </View>
+
+
           </View>
 
           : null
 
         }
+        
+        <TouchableHighlight
+          onPress={() => console.log('Save changes')}
+          activeOpacity={0.8}
+          underlayColor={'#78a0ff'}
+          style={{
+            height: 60,
+            width: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: '#2679ff',
+            borderRadius: 10,
 
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 16,
+              fontFamily: 'HelveticaNeue-Medium',
+              letterSpacing: 0.5,
+              color: 'white'
 
+            }}
+          >
+            Save Changes
+         </Text>
+        </TouchableHighlight>
 
       </View>
-
     </View>
   )
 }

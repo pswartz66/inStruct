@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
   editProfileCol: {
     flexDirection: 'column',
     alignItems: 'center',
-    height: 160,
-    marginTop: 10,
+    height: 150,
+    marginBottom: 10,
     width: '100%',
   },  
   editProfileRow: {
@@ -23,6 +23,13 @@ const styles = StyleSheet.create({
     color: 'black',
     fontFamily: 'HelveticaNeue',
     fontSize: 18,
+  },
+  editProfileSkillRow: {
+    flexDirection: 'row',
+    // justifyContent: 'space-evenly',
+    alignItems: 'center',
+    height: 100,
+    // width: '100%',
   }
 });
 

@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableHighlight, Button, FlatList, TouchableOpacity, Dimensions } from 'react-native';
 import styles from './styles';
 
+import { Auth, API } from 'aws-amplify';
+import { createProfile } from '../../graphql/mutations';
+
+
 const EditProfileScreen = () => {
   const [role, setRole] = useState('');
   const [selectedId, setSelectedId] = useState(null)
@@ -95,6 +99,19 @@ const EditProfileScreen = () => {
       skill: 'drawing'
     },
   ]
+
+
+  const onSaveProfile = async () => {
+    let userEmail = Auth.user.attributes.email;
+    let selectedSkill = 'none';
+    skillList.map((itm) => { 
+      if (itm.id === selectedId) { 
+        selectedSkill = itm.skill 
+      }})
+    const profile = { email: userEmail, type: role, skill: selectedSkill }
+    await API.graphql({ query: createProfile, variables: { input: profile } });
+
+  }
 
   return (
     <View>
@@ -223,9 +240,9 @@ const EditProfileScreen = () => {
           : null
 
         }
-        
+
         <TouchableHighlight
-          onPress={() => console.log('Save changes')}
+          onPress={() => onSaveProfile()}
           activeOpacity={0.8}
           underlayColor={'#78a0ff'}
           style={{

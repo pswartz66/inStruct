@@ -1,5 +1,6 @@
-type Todo @model {
+type Profile @model {
   id: ID!
-  name: String!
-  description: String
+  email: String!
+  type: String!
+  skill: String
 }

@@ -1,6 +1,7 @@
-type Profile @model {
+type Profile @model @auth(rules: [{allow: public}]) {
   id: ID!
   email: String!
-  type: String!
+  type: String
   skill: String
 }
+ 

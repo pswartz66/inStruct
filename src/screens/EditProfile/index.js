@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableHighlight, Button, FlatList, TouchableOpacity, Dimensions } from 'react-native';
 import styles from './styles';
 
-import { Auth, API } from 'aws-amplify';
-import { createProfile } from '../../graphql/mutations';
-
+import { Auth, API, graphqlOperation } from 'aws-amplify';
+import { createProfile, updateProfile } from '../../graphql/mutations';
+import { getProfile, listProfiles } from '../../graphql/queries';
 
 const EditProfileScreen = () => {
+  const [profiles, setProfiles] = useState(null);
   const [role, setRole] = useState('');
   const [selectedId, setSelectedId] = useState(null)
   const [userRole, setUserRole] = useState({
@@ -100,17 +101,37 @@ const EditProfileScreen = () => {
     },
   ]
 
-
   const onSaveProfile = async () => {
-    let userEmail = Auth.user.attributes.email;
-    let selectedSkill = 'none';
-    skillList.map((itm) => { 
-      if (itm.id === selectedId) { 
-        selectedSkill = itm.skill 
-      }})
-    const profile = { email: userEmail, type: role, skill: selectedSkill }
-    await API.graphql({ query: createProfile, variables: { input: profile } });
+    let userEmail = Auth.user.attributes.email.toString();
 
+    let selectedSkill = 'none';
+    skillList.map((itm) => {
+      if (itm.id === selectedId) {
+        selectedSkill = itm.skill
+      }
+    });
+
+    await API.graphql(graphqlOperation(listProfiles))
+      .then((profiles) => {
+        const foundID = profiles.data.listProfiles.items.filter(itm => itm.email === userEmail ? itm.id : null);
+        // console.log('foundID: ', foundID[0].id.toString());
+        
+        const profile = { 
+          id: foundID[0].id, 
+          email: userEmail, 
+          type: role,
+          skill: selectedSkill
+        };
+        
+        try {
+          API.graphql({ query: updateProfile, variables: { input: profile } })
+            .then(() => console.log('successfully updated user: ', userEmail))
+            .catch(err => console.log('Error updating profile: ', err));
+        } catch {
+          err => console.log(err);
+        }
+      })
+      .catch(err => console.log('Error listing profiles: ', err));
   }
 
   return (
@@ -199,7 +220,7 @@ const EditProfileScreen = () => {
                   showsVerticalScrollIndicator={false}
                   keyExtractor={(item, index) => index.toString()}
                   renderItem={({ item }) => {
-                    
+
                     const color = item.id === selectedId ? '#2679ff' : 'black';
 
                     return (

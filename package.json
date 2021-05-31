@@ -8,14 +8,16 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "0.1.10",
-    "@react-native-community/netinfo": "^6.0.0",
+    "@react-native-community/netinfo": "^5.9.4",
     "@react-navigation/bottom-tabs": "^5.11.9",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.4",
     "amazon-cognito-identity-js": "^4.6.0",
     "aws-amplify": "^3.3.27",
     "aws-amplify-react-native": "^4.3.2",
+    "aws-appsync": "^4.0.3",
     "expo": "~41.0.0",
     "expo-status-bar": "~1.0.4",
     "react": "16.13.1",
@@ -30,7 +32,8 @@
     "react-native-web": "^0.15.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0"
+    "@babel/core": "^7.9.0",
+    "@redux-offline/redux-offline": "^2.6.0"
   },
   "private": true
 }

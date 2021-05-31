@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, Button, TextInput, TouchableOpacity, KeyboardAvoidingView, Alert } from 'react-native';
 import styles from './styles';
-import { Auth } from 'aws-amplify';
+import { Auth, API } from 'aws-amplify';
 import { validateEmail, validatePassword } from '../validation';
+
+import { createProfile } from '../../graphql/mutations';
 
 const SignIn = (props) => {
 
@@ -25,8 +27,25 @@ const SignIn = (props) => {
           username: email,
           password: password
         });
+
+        const profile = { email: email, type: 'User', skill: 'none' };
+        const condition = { email: { attributeExists: false }}
+
+        // send to database
+        // await API.graphql({
+        //   query: createProfile, variables: {
+        //     input: profile,
+        //     condition: condition
+        //   }
+        // })
+        // .then(() => console.log('successfully added to DB'))
+        // .catch(err => console.log('Error from sign in: ', err));
+        ;
+
         // see app.js -> next navigate to navigation/rest of app and pass user
         props.onStateChange('signedIn', user);
+
+
 
       } catch (error) {
         Alert.alert(error.message);

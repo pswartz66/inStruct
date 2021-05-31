@@ -3,15 +3,11 @@ import React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import Navigation from './src/navigation';
 import { Amplify } from 'aws-amplify';
+import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
+
 import awsconfig from './src/aws-exports';
-import { 
-  Authenticator,
-  // SignIn,
-  // SignUp,
-  // ConfirmSignUp,
-  // ForgotPassword,
-  // ChangePassword,
-} from 'aws-amplify-react-native';
+
+import { Authenticator } from 'aws-amplify-react-native';
 
 // Custom SignIn/SignUp pages
 import SignIn from './src/screens/SignIn';
@@ -33,6 +29,18 @@ Amplify.configure({
   
 });
 
+
+const client = new AWSAppSyncClient({
+  url: awsconfig.aws_appsync_graphqlEndpoint,
+  region: awsconfig.aws_appsync_region,
+  auth: {
+    type: AUTH_TYPE.AMAZON_COGNITO_USER_POOLS,
+    //jwtToken: async () => (await Auth.currentSession()).getIdToken().getJwtToken(),
+  },
+});
+
+
+
 const AuthScreens = (props) => {
   // console.log(props.authState);
   console.log('props', props.authState);
@@ -51,14 +59,13 @@ const AuthScreens = (props) => {
     case 'signedIn':
       return (
         <View style={styles.container}>
-          <Navigation />
+          <Navigation client={client}/>
         </View>
       );
     default:
       return <></>;
   }
 };
-
 
 export default function App() {
 

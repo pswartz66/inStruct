@@ -12,7 +12,7 @@ const Stack = createStackNavigator();
 
 const RootNavigation = (props) => {
 
-  console.log('AWS AppSync Client: ', props.client);
+  // console.log('AWS AppSync Client: ', props.client);
 
   return (
     <NavigationContainer>

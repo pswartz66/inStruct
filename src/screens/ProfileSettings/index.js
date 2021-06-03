@@ -10,9 +10,6 @@ const ProfileSettingsScreen = (props) => {
 
   const { navigate } = props.navigation;
   const { user } = props.route.params;
-  console.log('user: ', user);
-
-  console.log(props);
 
   const navigateToEdit = () => {
     console.log('navigate to edit profile');

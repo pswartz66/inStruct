@@ -17,7 +17,6 @@ const Profile = ({ navigation }) => {
   ];
 
   const navigateClick = () => {
-    console.log('clicked');
     navigation.navigate('ProfileSettings', { user: userEmail });
   }
 

@@ -28,8 +28,8 @@ const SignIn = (props) => {
           password: password
         });
 
-        const profile = { email: email, type: 'User', skill: 'none' };
-        const condition = { email: { attributeExists: false }}
+        // const profile = { email: email, type: 'User', skill: 'none' };
+        // const condition = { email: { attributeExists: false }}
 
         // send to database
         // await API.graphql({

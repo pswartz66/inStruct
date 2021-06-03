@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, TouchableHighlight, Button, FlatList, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, TextInput, TouchableHighlight, Button, FlatList, TouchableOpacity, Dimensions, Image } from 'react-native';
 import styles from './styles';
 
 import { Auth, API, graphqlOperation } from 'aws-amplify';
 import { createProfile, updateProfile } from '../../graphql/mutations';
 import { getProfile, listProfiles } from '../../graphql/queries';
-
+import * as ImagePicker from 'expo-image-picker';
+import { Storage } from 'aws-amplify';
 
 
 const EditProfileScreen = (props) => {
+
+  let userEmail = Auth.user.attributes.email.toString();
+
+  const [profImage, setProfImage] = useState(null);
 
   const [currentProfile, setCurrentProfile] = useState(null);
   const [selectedId, setSelectedId] = useState(0);
@@ -106,55 +111,73 @@ const EditProfileScreen = (props) => {
   ]
 
   useEffect(() => {
-
     API.graphql(graphqlOperation(listProfiles))
       .then((profiles) => {
         const userID = profiles.data.listProfiles.items.filter(itm => itm.email === props.route.params ? itm.id : null);
 
-        try {
-          API.graphql({ query: getProfile, variables: {id: userID[0].id }})
-            .then((profile) => {
-              setCurrentProfile(profile);
-              setRole(profile.data.getProfile.type);
-              if (role === 'User') {
-                setUserRole({
-                  type: 'User',
-                  color: '#2679ff'
-                })
-                setInstructorRole({
-                  type: 'none',
-                  color: '#dbdbdb'
-                })
-              }
-              if (role === 'Instructor') {
-                setInstructorRole({
-                  type: 'Instructor',
-                  color: '#2679ff'
-                })
-                setUserRole({
-                  type: 'none',
-                  color: '#dbdbdb'
-                })
-              }
+        API.graphql({ query: getProfile, variables: { id: userID[0].id } })
+          .then((profile) => {
+            setCurrentProfile(profile);
+            setRole(profile.data.getProfile.type);
+            if (role === 'User') {
+              setUserRole({
+                type: 'User',
+                color: '#2679ff'
+              })
+              setInstructorRole({
+                type: 'none',
+                color: '#dbdbdb'
+              })
+            }
+            if (role === 'Instructor') {
+              setInstructorRole({
+                type: 'Instructor',
+                color: '#2679ff'
+              })
+              setUserRole({
+                type: 'none',
+                color: '#dbdbdb'
+              })
+            }
 
-              skillList.map((itm) => {
-                if (itm.skill === userID[0].skill) {
-                  setSelectedId(itm.id)
-                }
-              });
-              console.log('Received profile from DB for: ', profile);
-            })
-            .catch(err => console.log('Error getting single profile: ', err))
-        } catch {
-          err => console.log(err);
-        }
+            skillList.map((itm) => {
+              if (itm.skill === userID[0].skill) {
+                setSelectedId(itm.id)
+              }
+            });
+            console.log('Received profile from DB for: ', profile);
+          })
+          .catch(err => console.log('Error getting single profile: ', err))
+
       })
       .catch(err => console.log('Error listing profiles: ', err));
+
+    async () => {
+      const { status } = await ImagePicker.requestCameraPermissionsAsync();
+      if (status !== 'granted') {
+        alert('Please update camera settings for this to work.')
+      }
+    }
+
+    
+    // Storage.get("")
+    //   .then(userImg => {
+    //     console.log('retrieved uri from S3: ', userImg);
+    //     // setProfImage(userImg)
+    //   })
+
+
+
+    // cleanup function
+    return () => {
+      console.log('cleanup function');
+    }
 
   }, []);
 
   const onSaveProfile = async () => {
-    let userEmail = Auth.user.attributes.email.toString();
+    console.log('clicked image');
+    userEmail = Auth.user.attributes.email.toString();
 
     let selectedSkill = 'none';
     // if the role is user then no need to have a skill set in the db, default to none
@@ -165,20 +188,19 @@ const EditProfileScreen = (props) => {
         }
       });
     }
-    
 
     await API.graphql(graphqlOperation(listProfiles))
       .then((profiles) => {
         const foundID = profiles.data.listProfiles.items.filter(itm => itm.email === userEmail ? itm.id : null);
         // console.log('foundID: ', foundID[0].id.toString());
-        
-        const profile = { 
-          id: foundID[0].id, 
-          email: userEmail, 
+
+        const profile = {
+          id: foundID[0].id,
+          email: userEmail,
           type: role,
           skill: selectedSkill
         };
-        
+
         try {
           API.graphql({ query: updateProfile, variables: { input: profile } })
             .then(() => {
@@ -195,12 +217,37 @@ const EditProfileScreen = (props) => {
   }
 
 
+  
+  // save image to S3
+  const saveImage = async () => {
+
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setProfImage(result.uri);
+      // send to S3 data storage in aws here
+      Storage.put(userEmail, result.uri)
+        .then(() => {
+          console.log('successfully uploaded image to S3 bucket');
+        })
+        .catch(err => console.log('Error uploading image to S3 bucket: ', err));
+    }
+
+  }
+
   return (
     <View>
       <View style={styles.editProfileContainer}>
         <View style={styles.editProfileCol}>
           <TouchableOpacity
-
+            onPress={saveImage}
           >
             <View style={{
               height: 120,
@@ -210,7 +257,20 @@ const EditProfileScreen = (props) => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-              <Text>Profile image</Text>
+              {profImage === null ?
+                <Text>Profile image</Text>
+                :
+                <Image style={{
+                  height: 120,
+                  width: 120,
+                  borderRadius: 100,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+
+                }}
+                  source={{ uri: profImage }} />
+
+              }
             </View>
           </TouchableOpacity>
 
@@ -279,12 +339,12 @@ const EditProfileScreen = (props) => {
                   initialNumToRender={skillList.length}
                   initialScrollIndex={selectedId}
                   getItemLayout={(data, index) => (
-                    {length: skillList.length, offset: 100 * (selectedId - 1), index}
+                    { length: skillList.length, offset: 100 * (selectedId - 1), index }
                   )}
                   renderItem={({ item }) => {
 
 
-                  const color = item.id === selectedId ? '#2679ff' : 'black';
+                    const color = item.id === selectedId ? '#2679ff' : 'black';
 
                     return (
                       <TouchableOpacity

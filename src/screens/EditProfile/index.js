@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, TouchableHighlight, Button, FlatList, TouchableOpacity, Dimensions } from 'react-native';
 import styles from './styles';
 
@@ -6,10 +6,14 @@ import { Auth, API, graphqlOperation } from 'aws-amplify';
 import { createProfile, updateProfile } from '../../graphql/mutations';
 import { getProfile, listProfiles } from '../../graphql/queries';
 
-const EditProfileScreen = () => {
-  const [profiles, setProfiles] = useState(null);
+
+
+const EditProfileScreen = (props) => {
+
+  const [currentProfile, setCurrentProfile] = useState(null);
+  const [selectedId, setSelectedId] = useState(0);
+
   const [role, setRole] = useState('');
-  const [selectedId, setSelectedId] = useState(null)
   const [userRole, setUserRole] = useState({
     type: 'none',
     color: '#dbdbdb'
@@ -101,15 +105,67 @@ const EditProfileScreen = () => {
     },
   ]
 
+  useEffect(() => {
+
+    API.graphql(graphqlOperation(listProfiles))
+      .then((profiles) => {
+        const userID = profiles.data.listProfiles.items.filter(itm => itm.email === props.route.params ? itm.id : null);
+
+        try {
+          API.graphql({ query: getProfile, variables: {id: userID[0].id }})
+            .then((profile) => {
+              setCurrentProfile(profile);
+              setRole(profile.data.getProfile.type);
+              if (role === 'User') {
+                setUserRole({
+                  type: 'User',
+                  color: '#2679ff'
+                })
+                setInstructorRole({
+                  type: 'none',
+                  color: '#dbdbdb'
+                })
+              }
+              if (role === 'Instructor') {
+                setInstructorRole({
+                  type: 'Instructor',
+                  color: '#2679ff'
+                })
+                setUserRole({
+                  type: 'none',
+                  color: '#dbdbdb'
+                })
+              }
+
+              skillList.map((itm) => {
+                if (itm.skill === userID[0].skill) {
+                  setSelectedId(itm.id)
+                }
+              });
+              console.log('Received profile from DB for: ', profile);
+            })
+            .catch(err => console.log('Error getting single profile: ', err))
+        } catch {
+          err => console.log(err);
+        }
+      })
+      .catch(err => console.log('Error listing profiles: ', err));
+
+  }, []);
+
   const onSaveProfile = async () => {
     let userEmail = Auth.user.attributes.email.toString();
 
     let selectedSkill = 'none';
-    skillList.map((itm) => {
-      if (itm.id === selectedId) {
-        selectedSkill = itm.skill
-      }
-    });
+    // if the role is user then no need to have a skill set in the db, default to none
+    if (role !== 'User') {
+      skillList.map((itm) => {
+        if (itm.id === selectedId) {
+          selectedSkill = itm.skill
+        }
+      });
+    }
+    
 
     await API.graphql(graphqlOperation(listProfiles))
       .then((profiles) => {
@@ -125,7 +181,11 @@ const EditProfileScreen = () => {
         
         try {
           API.graphql({ query: updateProfile, variables: { input: profile } })
-            .then(() => console.log('successfully updated user: ', userEmail))
+            .then(() => {
+              console.log('successfully updated user: ', userEmail)
+              alert('Save successful');
+            })
+
             .catch(err => console.log('Error updating profile: ', err));
         } catch {
           err => console.log(err);
@@ -134,11 +194,10 @@ const EditProfileScreen = () => {
       .catch(err => console.log('Error listing profiles: ', err));
   }
 
+
   return (
     <View>
       <View style={styles.editProfileContainer}>
-
-
         <View style={styles.editProfileCol}>
           <TouchableOpacity
 
@@ -156,8 +215,6 @@ const EditProfileScreen = () => {
           </TouchableOpacity>
 
         </View>
-
-
 
         <View style={styles.editProfileCol}>
           <Text style={styles.editHeader}>Select your role: {role}</Text>
@@ -210,7 +267,7 @@ const EditProfileScreen = () => {
                   fontSize: 20,
                   fontFamily: 'HelveticaNeue-Medium',
                 }}
-              >Your skill:   </Text>
+              >Your skill:  </Text>
 
               <View>
 
@@ -219,9 +276,15 @@ const EditProfileScreen = () => {
                   vertical={true}
                   showsVerticalScrollIndicator={false}
                   keyExtractor={(item, index) => index.toString()}
+                  initialNumToRender={skillList.length}
+                  initialScrollIndex={selectedId}
+                  getItemLayout={(data, index) => (
+                    {length: skillList.length, offset: 100 * (selectedId - 1), index}
+                  )}
                   renderItem={({ item }) => {
 
-                    const color = item.id === selectedId ? '#2679ff' : 'black';
+
+                  const color = item.id === selectedId ? '#2679ff' : 'black';
 
                     return (
                       <TouchableOpacity

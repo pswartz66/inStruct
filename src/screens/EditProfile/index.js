@@ -119,6 +119,7 @@ const EditProfileScreen = (props) => {
           .then((profile) => {
             setCurrentProfile(profile);
             setRole(profile.data.getProfile.type);
+            setProfImage(profile.data.getProfile.image);
             if (role === 'User') {
               setUserRole({
                 type: 'User',
@@ -158,13 +159,6 @@ const EditProfileScreen = (props) => {
         alert('Please update camera settings for this to work.')
       }
     }
-
-    
-    // Storage.get("")
-    //   .then(userImg => {
-    //     console.log('retrieved uri from S3: ', userImg);
-    //     // setProfImage(userImg)
-    //   })
 
 
 
@@ -217,8 +211,20 @@ const EditProfileScreen = (props) => {
   }
 
 
-  
-  // save image to S3
+  // const getImageFromStorage = async () => {
+
+    // const imageFile = await Storage.get(`public/${userEmail}`);
+    // console.log('image file from S3 : ', imageFile);
+
+    // Storage.get("")
+    //   .then(userImg => {
+    //     console.log('retrieved uri from S3: ', userImg);
+    //     // setProfImage(userImg)
+    //   })
+  // }
+
+
+  // save image to DB
   const saveImage = async () => {
 
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -228,18 +234,41 @@ const EditProfileScreen = (props) => {
       quality: 1,
     });
 
-    console.log(result);
-
     if (!result.cancelled) {
       setProfImage(result.uri);
-      // send to S3 data storage in aws here
-      Storage.put(userEmail, result.uri)
-        .then(() => {
-          console.log('successfully uploaded image to S3 bucket');
-        })
-        .catch(err => console.log('Error uploading image to S3 bucket: ', err));
-    }
 
+      await API.graphql(graphqlOperation(listProfiles))
+      .then((profiles) => {
+        const foundID = profiles.data.listProfiles.items.filter(itm => itm.email === userEmail ? itm.id : null);
+
+        const profile = {
+          id: foundID[0].id,
+          email: userEmail,
+          image: result.uri
+        };
+
+        try {
+          API.graphql({ query: updateProfile, variables: { input: profile } })
+            .then(() => {
+              console.log('successfully updated user image: ', userEmail)
+              alert('Save successful');
+            })
+
+            .catch(err => console.log('Error updating profile: ', err));
+        } catch {
+          err => console.log(err);
+        }
+      })
+      .catch(err => console.log('Error listing profiles: ', err));
+
+      // send to S3 data storage in aws here
+      // Storage.put(userEmail, result)
+      //   .then((path) => {
+      //     console.log(path);
+      //     console.log('successfully uploaded image to S3 bucket');
+      //   })
+      //   .catch(err => console.log('Error uploading image to S3 bucket: ', err));
+    }
   }
 
   return (
@@ -315,7 +344,6 @@ const EditProfileScreen = (props) => {
             </TouchableHighlight>
           </View>
         </View>
-
 
 
         {role === 'Instructor' ?

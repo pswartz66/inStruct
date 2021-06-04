@@ -11,6 +11,7 @@ export const createProfile = /* GraphQL */ `
       email
       type
       skill
+      image
       createdAt
       updatedAt
     }
@@ -26,6 +27,7 @@ export const updateProfile = /* GraphQL */ `
       email
       type
       skill
+      image
       createdAt
       updatedAt
     }
@@ -41,6 +43,7 @@ export const deleteProfile = /* GraphQL */ `
       email
       type
       skill
+      image
       createdAt
       updatedAt
     }

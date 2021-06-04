@@ -8,6 +8,7 @@ export const getProfile = /* GraphQL */ `
       email
       type
       skill
+      image
       createdAt
       updatedAt
     }
@@ -25,6 +26,7 @@ export const listProfiles = /* GraphQL */ `
         email
         type
         skill
+        image
         createdAt
         updatedAt
       }

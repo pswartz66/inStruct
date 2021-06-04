@@ -14,10 +14,7 @@ const EditProfileScreen = (props) => {
   let userEmail = Auth.user.attributes.email.toString();
 
   const [profImage, setProfImage] = useState(null);
-
-  const [currentProfile, setCurrentProfile] = useState(null);
   const [selectedId, setSelectedId] = useState(0);
-
   const [role, setRole] = useState('');
   const [userRole, setUserRole] = useState({
     type: 'none',
@@ -113,13 +110,12 @@ const EditProfileScreen = (props) => {
   useEffect(() => {
     API.graphql(graphqlOperation(listProfiles))
       .then((profiles) => {
-        const userID = profiles.data.listProfiles.items.filter(itm => itm.email === props.route.params ? itm.id : null);
+        const userID = profiles.data.listProfiles.items.filter(itm => itm.email === userEmail ? itm.id : null);
 
         API.graphql({ query: getProfile, variables: { id: userID[0].id } })
           .then((profile) => {
-            setCurrentProfile(profile);
-            setRole(profile.data.getProfile.type);
             setProfImage(profile.data.getProfile.image);
+            setRole(profile.data.getProfile.type);
             if (role === 'User') {
               setUserRole({
                 type: 'User',
@@ -171,7 +167,7 @@ const EditProfileScreen = (props) => {
 
   const onSaveProfile = async () => {
     console.log('clicked image');
-    userEmail = Auth.user.attributes.email.toString();
+    // userEmail = Auth.user.attributes.email.toString();
 
     let selectedSkill = 'none';
     // if the role is user then no need to have a skill set in the db, default to none
@@ -249,9 +245,11 @@ const EditProfileScreen = (props) => {
 
         try {
           API.graphql({ query: updateProfile, variables: { input: profile } })
-            .then(() => {
+            .then((updatedProfile) => {
               console.log('successfully updated user image: ', userEmail)
-              alert('Save successful');
+              console.log(updatedProfile.data.updateProfile.image);
+              alert('Saved Image successful');
+              // props.navigation.navigate('Profile', updatedProfile.data.updateProfile.image);
             })
 
             .catch(err => console.log('Error updating profile: ', err));

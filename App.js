@@ -30,14 +30,14 @@ Amplify.configure({
 });
 
 
-const client = new AWSAppSyncClient({
-  url: awsconfig.aws_appsync_graphqlEndpoint,
-  region: awsconfig.aws_appsync_region,
-  auth: {
-    type: AUTH_TYPE.AMAZON_COGNITO_USER_POOLS,
-    //jwtToken: async () => (await Auth.currentSession()).getIdToken().getJwtToken(),
-  },
-});
+// const client = new AWSAppSyncClient({
+//   url: awsconfig.aws_appsync_graphqlEndpoint,
+//   region: awsconfig.aws_appsync_region,
+//   auth: {
+//     type: AUTH_TYPE.AMAZON_COGNITO_USER_POOLS,
+//     //jwtToken: async () => (await Auth.currentSession()).getIdToken().getJwtToken(),
+//   },
+// });
 
 
 
@@ -59,7 +59,9 @@ const AuthScreens = (props) => {
     case 'signedIn':
       return (
         <View style={styles.container}>
-          <Navigation client={client}/>
+          {/* <Navigation client={client}/> */}
+          <Navigation />
+
         </View>
       );
     default:
